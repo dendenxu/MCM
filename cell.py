@@ -30,8 +30,8 @@ class SandCastleSimulator2D:
         sea_wet_sand[160::] = np.tile(sea_blue, 256 - 160).reshape(256 - 160, 4)
         self.sea_wet_sand = mpl.colors.ListedColormap(sea_wet_sand)
 
-        self.shear_rate = 0.7
-        self.humidify_rate = 0.02
+        self.shear_rate = 1.5
+        self.humidify_rate = 0.01
 
         self.delta_humidity = np.flip(np.exp(np.linspace(-10, 0, self.depth))) * self.humidify_rate
         self.delta_humidity = np.tile(self.delta_humidity, self.width).reshape(self.depth, self.width)
@@ -48,15 +48,18 @@ class SandCastleSimulator2D:
         slope = np.append(slope, np.full([self.delta, ], slope[-1]))
         return np.arctan(slope)
 
+    def update_life(self):
+        self.life = np.array([[i >= self.edge[j] for j in range(self.width)] for i in range(self.depth)])
+
     def drop_dead(self):
         self.humidity = np.array(
             [[self.humidity[i, j] if self.life[i, j] else 1. for j in range(self.width)] for i in range(self.depth)])
 
     def bye_prick(self):
-        for i in range(1, self.width - 1):
-            if self.edge[i] < self.edge[i - 1] and self.edge[i] < self.edge[i + 1]:
-                self.edge[i] = max(self.edge[i - 1], self.edge[i + 1])
-        self.life = np.array([[i >= self.edge[j] for j in range(self.width)] for i in range(self.depth)])
+        for i in range(self.delta, self.width - self.delta):
+            if self.edge[i] < min(self.edge[i - self.delta:i + self.delta]):
+                self.edge[i] = max(self.edge[i - self.delta], self.edge[i + self.delta])
+        # self.life = np.array([[i >= self.edge[j] for j in range(self.width)] for i in range(self.depth)])
 
     def wave(self):
         # Let's assume the slope and humidity level and the angle of the impact will change what our sand castle look like
@@ -71,11 +74,11 @@ class SandCastleSimulator2D:
                 # print("Current value of i is {}".format(i))
                 # print("Current value of edge is {}".format(self.edge[i]))
                 if (delta_shear[i] + 1 / (1 - self.humidity[self.edge[i], i]) - 1) > 1:
-                    self.life[self.edge[i], i] = False
+                    # self.life[self.edge[i], i] = False
                     self.edge[i] += 1 if self.edge[i] < self.depth - 1 else 0
                     delta_shear[i] -= delta_shear[i] / self.delta
 
-        # self.bye_prick()
+        self.bye_prick()
         # We'll firstly update the humidity level according to the angle of impact
         self.delta_humidity *= cosine
         # print(delta_humidity.shape)
@@ -88,7 +91,7 @@ class SandCastleSimulator2D:
 
         # Finally, we'll update the sand castle's humidity information and slope information
         self.slope = self.calculate_slope()
-        self.drop_dead()
+        # self.drop_dead()
 
 
 # Please run them in interactive mode to get proper image output
@@ -101,3 +104,9 @@ plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
 plt.figure()
 plt.imshow(sim.life, cmap=sim.sea_sand)
 sim.wave()
+for _ in range(100):
+    sim.wave()
+sim.update_life()
+sim.drop_dead()
+plt.figure()
+plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
