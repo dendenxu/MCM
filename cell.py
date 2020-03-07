@@ -30,7 +30,7 @@ class SandCastleSimulator2D:
         sea_wet_sand[160::] = np.tile(sea_blue, 256 - 160).reshape(256 - 160, 4)
         self.sea_wet_sand = mpl.colors.ListedColormap(sea_wet_sand)
 
-        self.shear_rate = 1.5
+        self.shear_rate = 0.7
         self.humidify_rate = 0.02
 
         self.delta_humidity = np.flip(np.exp(np.linspace(-10, 0, self.depth))) * self.humidify_rate
@@ -52,12 +52,17 @@ class SandCastleSimulator2D:
         self.humidity = np.array(
             [[self.humidity[i, j] if self.life[i, j] else 1. for j in range(self.width)] for i in range(self.depth)])
 
+    def bye_prick(self):
+        for i in range(1, self.width - 1):
+            if self.edge[i] < self.edge[i - 1] and self.edge[i] < self.edge[i + 1]:
+                self.edge[i] = max(self.edge[i - 1], self.edge[i + 1])
+        self.life = np.array([[i >= self.edge[j] for j in range(self.width)] for i in range(self.depth)])
+
     def wave(self):
         # Let's assume the slope and humidity level and the angle of the impact will change what our sand castle look like
-        # We'll firstly update the humidity level according to the angle of impact
 
-        cosine = np.cos(self.slope)
-        sine = np.sin(self.slope)
+        cosine = abs(np.cos(self.slope))
+        sine = abs(np.sin(self.slope))
 
         # Then, according to the humidity level and angle of impact, we'll determine the san cell that is currently alive
         delta_shear = sine * self.shear_rate
@@ -70,6 +75,8 @@ class SandCastleSimulator2D:
                     self.edge[i] += 1 if self.edge[i] < self.depth - 1 else 0
                     delta_shear[i] -= delta_shear[i] / self.delta
 
+        # self.bye_prick()
+        # We'll firstly update the humidity level according to the angle of impact
         self.delta_humidity *= cosine
         # print(delta_humidity.shape)
         # print(self.humidity.shape)
