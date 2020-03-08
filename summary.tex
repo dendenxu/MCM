@@ -140,7 +140,7 @@ Various water contents produce different liquid bridge distributions, which will
 	\caption{States of Sand}
 	\vspace{10pt}
 	\centering
-	\begin{tabular}{p{2cm}p{3cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+	\begin{tabular}{p{4cm}p{2cm}p{4cm}p{4cm}}
 		\hline
 		Liquid Content & State & Description & left for future use \\
 		\hline
@@ -154,21 +154,21 @@ Various water contents produce different liquid bridge distributions, which will
 	\label{bs2}
 \end{table}
 \par
-When the wave hits the foundation, the surface area is in slurry state and there exists no cohesive interaction between the particles, which makes it very hard, if not impossible, to prevent sand loss. Nevertheless, collapses after the wave resides can cause more harm to the foundation, which can be avoided by alternating the shape.
+When the wave gets into contact with the foundation, the surface area is in slurry state and there exists no cohesive interaction between the particles, which makes it very hard, if not impossible, to prevent sand loss. Nevertheless, collapses after the wave resides can cause more harm to the foundation, which can be avoided by alternating the shape.
 \par 
 For dry sand, the failure criterion is given in terms of the shear stress $\tau$, the normal compressible stress $\sigma$ and the internal friction $\mu$ as
 $$\tau > \mu\sigma$$
-This is simply the friction formula with different notations. Now we consider a sandpile with a normal adhesive stress $s_A$ across every plane, in addition to the stress caused by weight. The equation(1) is then modified as
+This is simply the friction formula with different notations. For wet sand, we consider a sandpile with a normal adhesive stress $s_A$ across every plane, in addition to the stress caused by weight. The equation(1) is then modified as
 $$\tau > \mu(\sigma + s_A)$$
-This criterion is the so-called \textbf{Mohr-Coulumb criterion}.The stress resulting from the weight above the plane is shown in figure (1). Denote $\tau_f$ and $\mu_f$ as the shear stress and normal compressible stress at the failure plane,they can be written as
+This criterion is the so-called \textbf{Mohr-Coulumb criterion}. The stress resulting from the weight above the plane is shown in figure(1). Denote $\tau_f$ and $\mu_f$ as the shear stress and normal compressible stress at the failure plane, it is obvious from the schematic that they can be written as
 $$\tau_f = \rho gDsin\theta_c \qquad and \qquad \sigma_f = \rho gDcos\theta_c$$
-where $\theta_c$ is the critical angle, $D$ is the height of the sandpile and $\rho$ is the density of sand. Therefore, to solve for $\theta_c$ is to solve the equation
+where $\theta_c$ is the critical angle, $D$ is the height of the sandpile and $\rho$ is the density of sand. Therefore, combine the equations above, to solve for $\theta_c$ is to solve the equation
 $$\mu = tan\theta_c(D)\bigg(1 + \frac{s_A}{\rho gDcos\theta_c(D)}\bigg)$$
 \par
-The only unknow factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturated. 
+The only unknown factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturation. 
 
 \subsection{Top View Shape}
-
+ 
 \subsection{Calculating Results}
 \subsection{Simulating Results}
 \subsection{Refer to Footnote} 
