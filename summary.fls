@@ -454,6 +454,16 @@ INPUT d:\Documents\Desktop\MCM\summary.toc
 OUTPUT d:\Documents\Desktop\MCM\summary.toc
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT d:\Documents\Desktop\MCM\water_bridge.eps
+INPUT d:\Documents\Desktop\MCM\water_bridge.eps
+INPUT d:\Documents\Desktop\MCM\water_bridge.eps
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\water_bridge.eps
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
@@ -464,6 +474,16 @@ INPUT d:\Documents\Desktop\MCM\Figure_1-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_1-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_1-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_1-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2.eps
+INPUT d:\Documents\Desktop\MCM\Figure_2.eps
+INPUT d:\Documents\Desktop\MCM\Figure_2.eps
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2.eps
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
+INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi7.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi5.tfm
@@ -505,14 +525,11 @@ INPUT d:\Documents\Desktop\MCM\summary.lol
 INPUT d:\Documents\Desktop\MCM\summary.lol
 OUTPUT d:\Documents\Desktop\MCM\summary.lol
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT d:\Documents\Desktop\MCM\summary.aux
 INPUT d:\Documents\Desktop\MCM\summary.run.xml
 OUTPUT d:\Documents\Desktop\MCM\summary.run.xml
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
@@ -525,5 +542,3 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt12.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt12.pfb

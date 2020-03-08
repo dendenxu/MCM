@@ -1,15 +1,15 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}%
 \contentsline {subsection}{\numberline {1.1}Problem Background}{1}%
-\contentsline {subsection}{\numberline {1.2}Our Work}{1}%
-\contentsline {section}{\numberline {2}Assumptions \& Nomenclature}{1}%
-\contentsline {subsection}{\numberline {2.1}Assumptions}{1}%
-\contentsline {subsection}{\numberline {2.2}Nomenclature}{1}%
-\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{1}%
-\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{2}%
-\contentsline {subsection}{\numberline {3.2}Top View Shape}{2}%
-\contentsline {subsection}{\numberline {3.3}Calculating Results}{2}%
-\contentsline {subsection}{\numberline {3.4}Simulating Results}{2}%
+\contentsline {subsection}{\numberline {1.2}Our Work}{2}%
+\contentsline {section}{\numberline {2}Assumptions \& Nomenclature}{2}%
+\contentsline {subsection}{\numberline {2.1}Assumptions}{2}%
+\contentsline {subsection}{\numberline {2.2}Nomenclature}{2}%
+\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{2}%
+\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{3}%
+\contentsline {subsection}{\numberline {3.2}Top View Shape}{3}%
+\contentsline {subsection}{\numberline {3.3}Calculating Results}{3}%
+\contentsline {subsection}{\numberline {3.4}Simulating Results}{3}%
 \contentsline {section}{\numberline {4}Modeling Under Rain}{3}%
 \contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{3}%
 \contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{3}%
