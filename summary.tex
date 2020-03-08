@@ -16,13 +16,12 @@
 
 % \usepackage{newtxtext}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{newtxmath} % must come after amsXXX
+% \usepackage{newtxmath} % must come after amsXXX
 
 \usepackage[pdftex]{graphicx}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{setspace}
-\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}
@@ -60,7 +59,7 @@
 \newtheorem{definition}{Definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \begin{document}
+\begin{document}
 \graphicspath{{.}}  % Place your graphic files in the same directory as your main document
 \DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png}
 \thispagestyle{empty}
@@ -109,14 +108,23 @@
 
 \section{Introduction}
 \subsection{Problem Background}
-Sunshine, clear blue sea and golden color sand always seem to leave people in a happy state of mind.
-And a beach is where these three are combined, drawing people all around towards it.
-Sand, the granular matter formed by constant brushing of flowing water, however, can react with water in a different way, despite the fact that people refer to it as non-stable or unreliable.
-On a beach, where the already formed granular sand and the rise and fall of sea wave lies together, a new buff can be added to our flowing friend, the wet state.
 \par
+Sunshine, clear blue sea and golden color sand always seem to leave people in a happy state of mind.
+And a beach is where these three are combined, drawing people all around towards it. Sand, the granular matter formed by constant brushing of flowing water, however, can react with water in a different way, despite the fact that people refer to it as non-stable or unreliable. On a beach, where the already formed granular sand and the rise and fall of sea wave lies together, a new buff can be added to our flowing friend, a wetted state.
+\par
+Magically but not randomly, sand gets sticky when combined with water, due to the most obvious physical theorem: surface tension and atmosphere pressure. From previous people's work, we've know that this buff comes from the water bridge formed between sand particles, which can significantly cluster together during the increasing water-sand portion\autocite{pakpour2012construct,mitarai2006wet,kudrolli2008sticky}. Kudrolli and Arshad has visualized the bridge between sand like Figure \ref{fig:water_bridge}.
+\par
+And that's the magic that glue our favorite sand castle together, which is one of the most entertainment for enthusiastic beach goers. However, being built near the water that melts mud and our wet sand, all sand castles have to face the fate that they'll get too wet to hold its own weight and the impact from sea waves. That's because the water bridge has another property of clustering together\autocite{kudrolli2008sticky}. When you throw a pile of sand into water, they behave just as when they're completely dry, melting down like fluid. Thus beach castle builder might want to make their sand castle last longer than those build arbitrarily than others, which is also the purpose of this article.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{water_bridge.eps}
+    \caption{Water Bridge Between Sand Particle}
+    \label{fig:water_bridge}
+\end{figure}
 
 \subsection{Our Work}
+Normally people will sculpt their kingdom from a pile of tedious wet sand. To simplify the model and grasp main threads, we'll focus our research on this single, nondescriptive mound of wetted sand.
 
 \section{Assumptions \& Nomenclature}
 \subsection{Assumptions}
@@ -124,17 +132,18 @@ On a beach, where the already formed granular sand and the rise and fall of sea 
 
 
 \section{Modeling Under Waves and Tides}
-<<<<<<< HEAD
+
 \par
-The 3-dimensional shape constructing problem is divided into two subproblems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{Cellular Automata} to determine the best shape viewed from the top,...
+The 3-dimensional shape constructing problem is divided into two subproblems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{a modified version of Cellular Automata} to determine the best shape viewed from the top,...
 
 \subsection{Shape of the Slope: Mohr-Coulomb Criterion}
+
+
+We begin by determining the Side shape of the sand castle foundation. Before Approaching the problem, we will briefly address the property of sand as a granular media.
 \par
-We begin by determining the Side shape of the sand castle fundation. Before Approaching the problem, we will briefly address the property of sand as a granular media.
+In our assumptions, sand particles are considered as identical tiny spheres. If we zoom in to observe a pile of wet sand, there are the so-called liquid bridges formed between sand particles.
 \par
-In our assumptions, sand particle are considered as a simplified model of identical tiny spheres. If we zoom in to observe a pile of wet sand, there are the so-called liquid bridges formed between sand particles.
-\par
-Various water contents produce different liquid bridge distributions, which will influence the properties of sand. 
+Various water contents produce different liquid bridge distributions, which will influence the properties of sand.
 
 \begin{table}[H]
 	\caption{States of Sand}
@@ -160,18 +169,69 @@ For dry sand, the failure criterion is given in terms of the shear stress $\tau$
 $$\tau > \mu\sigma$$
 This is simply the friction formula with different notations. For wet sand, we consider a sandpile with a normal adhesive stress $s_A$ across every plane, in addition to the stress caused by weight. The equation(1) is then modified as
 $$\tau > \mu(\sigma + s_A)$$
-This criterion is the so-called \textbf{Mohr-Coulumb criterion}. The stress resulting from the weight above the plane is shown in figure(1). Denote $\tau_f$ and $\mu_f$ as the shear stress and normal compressible stress at the failure plane, it is obvious from the schematic that they can be written as
+This is the so-called \textbf{Mohr-Coulumb criterion}. The stress resulting from the weight above the plane is shown in figure(2). Denote $\tau_f$ and $\mu_f$ as the shear stress and normal compressible stress at the failure plane, it is obvious from the schematic that they can be written as
 $$\tau_f = \rho gDsin\theta_c \qquad and \qquad \sigma_f = \rho gDcos\theta_c$$
 where $\theta_c$ is the critical angle, $D$ is the height of the sandpile and $\rho$ is the density of sand. Therefore, combine the equations above, to solve for $\theta_c$ is to solve the equation
 $$\mu = tan\theta_c(D)\bigg(1 + \frac{s_A}{\rho gDcos\theta_c(D)}\bigg)$$
 \par
 The only unknown factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturation. 
+\par
+In this case, with water serves as lubricate, it makes sense to model sand particles as frictionless spheres. The pressure difference is then given by [] 
+$$P = -\frac{\Gamma}{\sqrt{V/2\pi R}}$$
+where $\Gamma$ is the surface tension of the fluid, V is the total amount of fluid present per particle contact, and R the radius of the particle. The adhesive force is given by
+$$f_A = 2\pi \Gamma R$$
+Note that (with certain conditions like distance between grains remains constant)the term $V$ which denotes the volume of liquid does not appear in equation(6).
+\par
+Assume our foundation contains sand particles that are closely packed. Such structure means there is an average of 6 contacts per square.
 
 \subsection{Top View Shape}
- 
-\subsection{Calculating Results}
-\subsection{Simulating Results}
-\subsection{Refer to Footnote} 
+\par 
+We used a modified version of\textbf{ cellular automata} to simulate the impact of tides and waves. There are several factors that are taken into consideration:
+\par 
+\begin{itemize}
+	\item [1)] 
+	...     
+	\item [2)]
+	...
+	\item [3)]
+	...
+\end{itemize}
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{Figure_1.eps}
+	\caption{A Windows Terminal.}
+	\label{fig:Terminal}
+\end{figure}
+\textcolor{cyan}{This is a test figure. Remember to delete me.}
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{Figure_2.eps}
+	\caption{A Windows Terminal.}
+	\label{fig:Terminal}
+\end{figure}
+\subsection{Calculate \& Simulate Results}
+Briefly review the equation derived in section 3.1
+$$tan\theta_c = \mu + \frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}sec[tan^{-1}(k)]$$
+To solve for the best shape of the slope, the necessary information about sand is listed below
+\begin{table}[H]
+	\caption{States of Sand}
+	\vspace{10pt}
+	\centering
+	\begin{tabular}{p{4cm}p{2cm}p{2cm}}
+		\hline
+		Physical Quantities & Values & Units 	\\
+		\hline
+		$\Gamma$		  & 72.8   	    & $mN/m$              \\
+		$\mu$  			  & 0.55~0.60   & -     	            \\
+		$\rho$ 			  & 1631     &  $kg/m^3$          \\
+		$R$ 			  & 0.05~2   & $mm$               \\
+		$g$  			  & 9.81      & $m/s^2$     \\
+		\hline
+	\end{tabular}
+	\label{bs2}
+\end{table}
+\par
+It is not sensible to embark on a trip to the beach on a stormy day, so we assume that the near-shore wave is gentle, with its height not exceeding 20cm, or $D \in [0, 20](unit:cm)$.
+We first assume that..
 
 \section{Modeling Under Rain}
 
@@ -179,21 +239,12 @@ The only unknown factor is $s_A$, the adhesive stress across the plane. Accordin
 \section{Other Ways to Make Our Sand Castle Last Longer}
 
 \section{Sensitivity Analysis}
- 
-=======
+
 
 \textcolor{cyan}{This is a test figure. Remember to delete me.}
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{Figure_1.eps}
-    \caption{A Windows Terminal.}
-    \label{fig:Terminal}
-\end{figure}
 
-This is a random citation \autocite{LeeRice-4} here.
-And this would be another citation: \autocite{AragonRios-30}.
-Here's another \autocite{Starobin-32} one.
 
-Random citation \autocite{LeeRice-4} embedded in text.
+
 This is some example text\footnote{\label{myfootnote}Hello footnote}.
 
 I'm referring to footnote \ref{myfootnote}.

@@ -36,9 +36,10 @@ class SandCastleSimulator2D:
         self.shear_rate = 0.5
         self.humidify_rate = 0.005
         self.humidify_depth = 1
-        self.osmotic_rate = 0.002
-        self.osmotic_depth = 5
-        # self.osmosis()
+        self.osmotic_rate = 0.005
+        self.osmotic_depth = 10
+        self.longest = np.sqrt(2) * self.osmotic_depth * 2
+        self.osmosis()
         self.drop_dead()
 
         self.delta_humidity = np.flip(
@@ -47,14 +48,20 @@ class SandCastleSimulator2D:
         self.delta_humidity = np.transpose(self.delta_humidity)
 
     def osmosis(self):
-        osmotic_depth = self.delta * self.osmotic_depth
-        longest = np.sqrt(self.width ** 2 + self.depth ** 2)
-        for i in range(self.width):
+        osmotic_depth = self.osmotic_depth
+        longest = self.longest
+        # longest = np.sqrt(self.width ** 2 + self.depth ** 2)
+        for i in range(osmotic_depth, self.width - osmotic_depth, self.delta):
             for j in range(self.edge[i] - osmotic_depth,
-                           self.edge[i] - osmotic_depth):
-                for k in range(i - osmotic_depth, i + osmotic_depth):
+                           self.edge[i] + osmotic_depth):
+                for k in range(i - osmotic_depth,
+                               i + osmotic_depth):
+                    if j < 0 or j >= self.depth:
+                        continue
                     distance = np.sqrt((j - self.edge[i]) ** 2 + (k - i) ** 2)
-                    self.humidity[j, k] += np.exp(-10 * distance / longest) * self.osmotic_rate
+                    delta_osmosis = np.exp(-10 * distance / longest) * self.osmotic_rate
+                    # print("delta_osmosis is {}".format(delta_osmosis))
+                    self.humidity[j, k] += delta_osmosis
 
     def update_slope(self):
         slope = np.asarray([(self.edge[i + self.delta] - self.edge[i - self.delta]) / (2 * self.delta)
@@ -115,7 +122,7 @@ class SandCastleSimulator2D:
             # print("Humidity from {} to {} is changed by {} to {} of delta humidity"
             #       .format(self.edge[i], self.depth, 0, self.depth - self.edge[i] - 1))
             self.humidity[self.edge[i]::, i] += delta_humidity[0:self.depth - self.edge[i], i]
-        # self.osmosis()
+        self.osmosis()
         # Finally, we'll update the sand castle's humidity information and slope information
         self.update_slope()
         # self.drop_dead()
@@ -125,13 +132,14 @@ class SandCastleSimulator2D:
 # ipython is recommended
 # from cell import *
 # delta should be no smaller than 1
-sim = SandCastleSimulator2D(1000, 1000, 5)
-fig = plt.figure()
+sim = SandCastleSimulator2D(1000, 1000, 3)
+fig = plt.figure(figsize=(16, 12))
 fig.add_subplot(231)
 plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
 # plt.figure()
 # plt.imshow(sim.life, cmap=sim.sea_sand)
-sim.wave()
+# sim.wave()
+
 for i in range(5):
     for _ in range(100):
         sim.wave()
@@ -139,5 +147,8 @@ for i in range(5):
     sim.drop_dead()
     fig.add_subplot(230 + i + 2)
     plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
-    # plt.figure()
-    # plt.imshow(sim.life, cmap=sim.sea_sand)
+
+plt.savefig("cell.eps")
+
+# plt.figure()
+# plt.imshow(sim.life, cmap=sim.sea_sand)
