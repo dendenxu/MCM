@@ -128,7 +128,48 @@ Normally people will sculpt their kingdom from a pile of tedious wet sand. To si
 
 \section{Assumptions \& Nomenclature}
 \subsection{Assumptions}
+Several assumptions are made in order to simplify our model.
+\begin{itemize}
+	\item [1)] 
+	The weather condition is suitable for sand castle building, namely, there is no wind and...
+	\item [2)]
+	The height of wave is the same, which we set as...
+	\item [3)]
+	Our optimization goal is to acquire the largest platform size while minimizing the lost of sand.
+	\item [4)]
+	Sand grains are regarded as tiny spheres. In our foundation, these grains are of the same size and closely packed. 
+	\item [5)]
+	The top of the foundation is a flat platform whose surface is horizontal.
+	\item [6)]
+	...
+\end{itemize}
 \subsection{Nomenclature}
+\begin{table}[H]
+	\caption{States of Sand}
+	\vspace{5pt}
+	\centering
+	\begin{tabular}{p{3cm}p{12cm}}
+		\hline
+		Symbol & Meaning \\
+		\hline
+		$\tau$   & the shear stress on a plane \\
+		$\tau_f$ & the shear stress on the failure plane\\
+		$\mu$    & the internal friction coefficient \\
+		$\sigma$ & the normal compressible stress on a plane \\
+		$\sigma_f$ & the normal compressible stree on the failure plane \\
+		$\rho$   & the density of sand \\ 
+		$\theta_c$ & the critical angle of a sandpile\\
+		$D$ & the height from the top of the sand pile \\
+		$P$ & the pressure[] \\
+		$\Gamma$ & the surface tension of water \\
+		$s_A$ & the adhesive stress \\
+		$f_A$ & the adhesive force \\
+		$V$ & the total amount of fluid present per particle contact \\
+		$R$ & the radius of particle \\
+		\hline       
+	\end{tabular}
+	\label{bs2}
+\end{table}
 
 
 \section{Modeling Under Waves and Tides}
@@ -239,7 +280,7 @@ We first assume that..
 \section{Other Ways to Make Our Sand Castle Last Longer}
 
 \section{Sensitivity Analysis}
-
+\section{Strengths and Weaknesses}
 
 \textcolor{cyan}{This is a test figure. Remember to delete me.}
 

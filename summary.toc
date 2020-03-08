@@ -5,11 +5,12 @@
 \contentsline {section}{\numberline {2}Assumptions \& Nomenclature}{2}%
 \contentsline {subsection}{\numberline {2.1}Assumptions}{2}%
 \contentsline {subsection}{\numberline {2.2}Nomenclature}{2}%
-\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{2}%
-\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{2}%
-\contentsline {subsection}{\numberline {3.2}Top View Shape}{3}%
-\contentsline {subsection}{\numberline {3.3}Calculate \& Simulate Results}{5}%
-\contentsline {section}{\numberline {4}Modeling Under Rain}{5}%
-\contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{5}%
-\contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{5}%
-\contentsline {section}{\numberline {7}Sensitivity Analysis}{5}%
+\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{3}%
+\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{3}%
+\contentsline {subsection}{\numberline {3.2}Top View Shape}{4}%
+\contentsline {subsection}{\numberline {3.3}Calculate \& Simulate Results}{6}%
+\contentsline {section}{\numberline {4}Modeling Under Rain}{6}%
+\contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{6}%
+\contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{6}%
+\contentsline {section}{\numberline {7}Sensitivity Analysis}{6}%
+\contentsline {section}{\numberline {8}Strengths and Weaknesses}{6}%
