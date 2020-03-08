@@ -5,7 +5,15 @@
 \contentsline {section}{\numberline {2}Assumptions \& Nomenclature}{1}%
 \contentsline {subsection}{\numberline {2.1}Assumptions}{1}%
 \contentsline {subsection}{\numberline {2.2}Nomenclature}{1}%
-\contentsline {section}{\numberline {3}Model}{1}%
-\contentsline {section}{\numberline {4}Try Using BibTex}{2}%
-\contentsline {subsection}{\numberline {4.1}Footnote}{2}%
-\contentsline {subsection}{\numberline {4.2}Refer to Footnote}{2}%
+\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{1}%
+\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{1}%
+\contentsline {subsection}{\numberline {3.2}Top View Shape}{2}%
+\contentsline {subsection}{\numberline {3.3}Calculating Results}{2}%
+\contentsline {subsection}{\numberline {3.4}Simulating Results}{2}%
+\contentsline {subsection}{\numberline {3.5}Refer to Footnote}{2}%
+\contentsline {section}{\numberline {4}Modeling Under Rain}{2}%
+\contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{2}%
+\contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{2}%
+\contentsline {section}{\numberline {7}Sensitivity Analysis}{2}%
+\contentsline {subsection}{\numberline {7.1}Footnote}{3}%
+\contentsline {subsection}{\numberline {7.2}Refer to Footnote}{3}%
