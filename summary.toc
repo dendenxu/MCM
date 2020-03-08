@@ -1,3 +1,4 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}%
 \contentsline {subsection}{\numberline {1.1}Problem Background}{1}%
 \contentsline {subsection}{\numberline {1.2}Our Work}{1}%
@@ -5,3 +6,6 @@
 \contentsline {subsection}{\numberline {2.1}Assumptions}{1}%
 \contentsline {subsection}{\numberline {2.2}Nomenclature}{1}%
 \contentsline {section}{\numberline {3}Model}{1}%
+\contentsline {section}{\numberline {4}Try Using BibTex}{2}%
+\contentsline {subsection}{\numberline {4.1}Footnote}{2}%
+\contentsline {subsection}{\numberline {4.2}Refer to Footnote}{2}%
