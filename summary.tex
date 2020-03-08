@@ -114,7 +114,12 @@ And a beach is where these three are combined, drawing people all around towards
 \par
 Magically but not randomly, sand gets sticky when combined with water, due to the most obvious physical theorem: surface tension and atmosphere pressure. From previous people's work, we've know that this buff comes from the water bridge formed between sand particles, which can significantly cluster together during the increasing water-sand portion\autocite{pakpour2012construct,mitarai2006wet,kudrolli2008sticky}. Kudrolli and Arshad has visualized the bridge between sand like Figure \ref{fig:water_bridge}.
 \par
+<<<<<<< HEAD
 And that's the magic that glue our favorite sand castle together, which is one of the most entertainment for enthusiastic beach goers. However, being built near the water that melts mud and our wet sand, all sand castles have to face the fate that they'll get too wet to hold its own weight and the impact from sea waves. That's because the water bridge has another property of clustering together\autocite{kudrolli2008sticky}. When you throw a pile of sand into water, they behave just as when they're completely dry, melting down like fluid. Thus beach castle builder might want to make their sand castle last longer than those build arbitrarily than others, which is also the purpose of this article.
+=======
+And that's the magic that glue our favorite sand castle together, which is one of the most entertainment for enthusiastic beach goers. However, being built near the water that melts mud and our wet sand, all sand castles have to face the fate that they'll g et too wet to hold its own weight and the impact from sea waves. That's because the water bridge has another property of clustering together\autocite{kudrolli2008sticky}. When you throw a pile of sand into water, they behave just as when they're completely dry, melting down like fluid. That is, sand castles lasts for only a period of time. Thus beach castle builder might want to make their sand castle last longer than those build arbitrarily than others, which is also the purpose of this article.
+
+>>>>>>> 41791c65690afc4c2eb94bdef0ba84e26bfc9b6b
 
 \begin{figure}
     \centering
@@ -124,7 +129,18 @@ And that's the magic that glue our favorite sand castle together, which is one o
 \end{figure}
 
 \subsection{Our Work}
-Normally people will sculpt their kingdom from a pile of tedious wet sand. To simplify the model and grasp main threads, we'll focus our research on this single, nondescriptive mound of wetted sand.
+Normally people would sculpt their kingdom from a pile of tedious wet sand. To simplify the model and grasp main threads, we'll focus our research on this single, nondescriptive mound of wetted sand. In this article, we develop a method for determining the most long-lasting three dimensional shape for a tedious sand castle, which will be later referred to as \textit{sand castle foundation}.
+\par
+Our model addresses the problem of constructing a three dimensional structure by projection, which makes the construction of individual part of our model easy to implement. Firstly we determine the optimal \textit{side view} of our \textit{sand castle foundation} by analysing and extracting information from similar research on wet granular material\autocite{mitarai2006wet}. Then we construct the best \textit{top view} of the \textit{sand castle foundation} by constructing a \textbf{Cellular Automata}.
+
+\paragraph{Side Slope Determination}
+You've probably seen questions about the slope of a pile of dry sand in junior high school practice books. In our research, we address the problem about dry sand as a normal junior high student would. However, the analysis of wet sand requires some technique beyond low level physics. In our research, we establish this model using \textbf{Mohr-Coulomb Criterion}.
+
+\paragraph{Top View Determination}
+Our model analyses the impact of sea wave flow from a top view, or a \textit{slice} of the \textit{sand castle foundation}. Then we can combine the sliced impaction result together with the \textit{side slope} analysis to form a possible 3D object. Inside our model we construct a \textbf{Cellular Automata} since the shape of the sand slice edge isn't as obvious the side slope may be, that is, it's merely possible to construct continuous function on the shape.
+
+\paragraph{Other Factors}
+It's worth noting that the interaction between sand and sea wave is far a lot more complex than direct force impact or sand-to-water mixture proportion change. Some other factors include: gravity of sea water that submerge the sand underneath, influx of weaker sea wave and the gravity of water inside the wetted sand. During the assembly of two views, we'll address these other factors that may influence a \textit{sand castle foundation}'s life span.
 
 \section{Assumptions \& Nomenclature}
 \subsection{Assumptions}
@@ -175,12 +191,16 @@ Several assumptions are made in order to simplify our model.
 \section{Modeling Under Waves and Tides}
 
 \par
+<<<<<<< HEAD
 The 3-dimensional shape constructing problem is divided into two subproblems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{a modified version of Cellular Automata} to determine the best shape viewed from the top,...
+=======
+The 3-dimensional shape constructing problem is divided into two sub-problems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{Cellular Automata} to determine the best shape viewed from the top,...
+>>>>>>> 41791c65690afc4c2eb94bdef0ba84e26bfc9b6b
 
 \subsection{Shape of the Slope: Mohr-Coulomb Criterion}
 
 
-We begin by determining the Side shape of the sand castle foundation. Before Approaching the problem, we will briefly address the property of sand as a granular media.
+We begin by determining the side shape of the sand castle foundation. Before Approaching the problem, we will briefly address the property of sand as a granular media.
 \par
 In our assumptions, sand particles are considered as identical tiny spheres. If we zoom in to observe a pile of wet sand, there are the so-called liquid bridges formed between sand particles.
 \par

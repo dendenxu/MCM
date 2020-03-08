@@ -2,9 +2,13 @@
 \contentsline {section}{\numberline {1}Introduction}{1}%
 \contentsline {subsection}{\numberline {1.1}Problem Background}{1}%
 \contentsline {subsection}{\numberline {1.2}Our Work}{2}%
+\contentsline {paragraph}{Side Slope Determination}{2}%
+\contentsline {paragraph}{Top View Determination}{2}%
+\contentsline {paragraph}{Other Factors}{2}%
 \contentsline {section}{\numberline {2}Assumptions \& Nomenclature}{2}%
 \contentsline {subsection}{\numberline {2.1}Assumptions}{2}%
 \contentsline {subsection}{\numberline {2.2}Nomenclature}{2}%
+<<<<<<< HEAD
 \contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{3}%
 \contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{3}%
 \contentsline {subsection}{\numberline {3.2}Top View Shape}{4}%
@@ -14,3 +18,14 @@
 \contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{6}%
 \contentsline {section}{\numberline {7}Sensitivity Analysis}{6}%
 \contentsline {section}{\numberline {8}Strengths and Weaknesses}{6}%
+=======
+\contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{2}%
+\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{3}%
+\contentsline {subsection}{\numberline {3.2}Top View Shape}{4}%
+\contentsline {subsection}{\numberline {3.3}Calculating Results}{4}%
+\contentsline {subsection}{\numberline {3.4}Simulating Results}{4}%
+\contentsline {section}{\numberline {4}Modeling Under Rain}{4}%
+\contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{4}%
+\contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{4}%
+\contentsline {section}{\numberline {7}Sensitivity Analysis}{4}%
+>>>>>>> 41791c65690afc4c2eb94bdef0ba84e26bfc9b6b

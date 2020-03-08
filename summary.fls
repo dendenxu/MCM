@@ -427,6 +427,7 @@ INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\water_bridge-eps-converted-to.pdf
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
 INPUT d:\Documents\Desktop\MCM\Figure_1.eps
@@ -470,7 +471,6 @@ OUTPUT d:\Documents\Desktop\MCM\summary.lot
 INPUT d:\Documents\Desktop\MCM\summary.lol
 INPUT d:\Documents\Desktop\MCM\summary.lol
 OUTPUT d:\Documents\Desktop\MCM\summary.lol
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT d:\Documents\Desktop\MCM\summary.aux
 INPUT d:\Documents\Desktop\MCM\summary.run.xml
 OUTPUT d:\Documents\Desktop\MCM\summary.run.xml
