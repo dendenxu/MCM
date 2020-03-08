@@ -33,22 +33,6 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\newtxmath.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\newtxmath.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifxetex.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifxetex.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\centernot.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\centernot.sty
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\binhex\binhex.tex
-INPUT C:\Program Files\MiKTeX 2.9\tex\generic\binhex\binhex.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty
@@ -83,6 +67,8 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\kvsetkeys\kvsetkeys.sty
@@ -343,6 +329,8 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\generic\catchfile\catchfile.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\catchfile\catchfile.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
+INPUT C:\Program Files\MiKTeX 2.9\tex\generic\iftex\ifluatex.sty
 INPUT d:\Documents\Desktop\MCM\nul:.tex
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xstring\xstring.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\xstring\xstring.sty
@@ -366,14 +354,6 @@ INPUT d:\Documents\Desktop\MCM\summary.aex
 INPUT d:\Documents\Desktop\MCM\summary.aux
 INPUT d:\Documents\Desktop\MCM\summary.aux
 OUTPUT d:\Documents\Desktop\MCM\summary.aux
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\omlntxmi.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\omlntxmi.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxexa.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxexa.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\lmsntxsy.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\lmsntxsy.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\lmxntxexx.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\lmxntxexx.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Program Files\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
@@ -400,16 +380,17 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr9.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi7.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy7.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
 INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
@@ -420,29 +401,11 @@ INPUT C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxmia.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxmia.fd
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxsym.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxsym.fd
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxsyc.fd
-INPUT C:\Program Files\MiKTeX 2.9\tex\latex\newtx\untxsyc.fd
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt9.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
@@ -484,18 +447,13 @@ INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
 INPUT d:\Documents\Desktop\MCM\Figure_2-eps-converted-to.pdf
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi7.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmi5.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy7.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsy5.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexx.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss8.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmss8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt10.tfm
+INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\cm\cmtt8.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
@@ -503,18 +461,6 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam5.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxmia.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsym.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxsyc.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
-INPUT C:\Program Files\MiKTeX 2.9\fonts\tfm\public\newtx\ntxexa.tfm
 INPUT d:\Documents\Desktop\MCM\summary.lof
 INPUT d:\Documents\Desktop\MCM\summary.lof
 OUTPUT d:\Documents\Desktop\MCM\summary.lof
@@ -530,6 +476,12 @@ INPUT d:\Documents\Desktop\MCM\summary.run.xml
 OUTPUT d:\Documents\Desktop\MCM\summary.run.xml
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb
@@ -538,7 +490,7 @@ INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
-INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Program Files\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmti12.pfb
