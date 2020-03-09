@@ -17,7 +17,7 @@
 % \usepackage{newtxtext}
 \usepackage{amsmath,amssymb,amsthm}
 % \usepackage{newtxmath} % must come after amsXXX
-
+\usepackage{array}
 \usepackage[pdftex]{graphicx}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
@@ -79,11 +79,29 @@
         \Large \textbf{Summary}
     }
 \end{center}
-% to here
+\par 
+After building a spectacular sand castle, we always think to ourselves: "how wonderful would that be if the castle could stand forever!" Unfortunately, waves rise and ebb, washing everything away. However, there are certain useful strategies we can adopt to preserve our sand castle for as long as possible, which is the topic of our article.
+Based on \textbf{Mohr-Coulomb Criterion} and \textbf{Cellular Automata}, we construct a model to identify the best 3-dimensional shape of our sand castle foundation under waves and tides. First, we break down the shape-identifying process and establish two corresponding sub-models to determine the side view shape and top view shape. 
+\paragraph{Side View Shape}We adopt \textbf{Mohr-Coulomb} Criterion to calculate the critical angle of the side slope and demonstrate why it turns out to be the optimal shape. 
+\paragraph{Top View Shape}\textbf{Cellular Automata} is used to identify the top view shape of the foundation. We develop a set of rules concerning the force of the wave and water content in different sand layers, and simulate the erosion process of our sand castle foundation. To solve for the best shape, we use two sets of enumeration rules:
+\begin{itemize}
+	\item [1)]
+	Begin from the square shape, then
+	\item [2)]
+	Begin by selecting key points and perform \textbf{Interpolation Methods}, from the simplest \textbf{Lagrange Interpolation} to \textbf{Cubic Spline Interpolation}.
+\end{itemize}
+\par 
+The effect of rain is simulated by adjusting several 
+\par 
+On determining the best sand-to-water proportion, we 
+\par 
+In the following section, we list six strategies that might make our sand castle last longer to further demonstrate the influence of \textit{salinity of seawater}, \textit{compactibility of sandpile}, etc. 
+\par 
+In the end, we perform sensitivity analysis on our model and discuss the strengths and weaknesses of it. Our model features high flexibility as it is able to simulate the erosion process of sand castle foundation of any shape. 
 %%%%%%%%%%% End Summary %%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+ \clearpage
 \pagestyle{fancy}
 
 
@@ -99,6 +117,7 @@ When it comes to summer, building sand castles is definitely on the must-do list
 Well, If you're building from memory, then first envision your castle. Just like cars are streamlined to minimize resistance of the air, a well-designed shape of your foundation can evidently prevent waves to flush away the sand and erode your sandcastles. Maybe a shape that have a smaller contact surface or enables to reduce the impact of waves will make your castle's life longer. You may try our team's new design shown in the figure to turn a pile of sand into a spectacular sandcastle!
 \paragraph{\#2: proper sand-to-water proportion}
 An optimal sand-to-water mixture proportion makes your sandcastle support its own weight against rough waves. Just a little bit of water enables liquid bridge forms between grains, which enables your sandcastle stand as a whole. Too much water, however, will destabilize the material and it will be easily washed away. In fact, our suggestion for you about the optimum liquid volume fraction is about.
+
 \paragraph{\#3: use terrain to your advantage}
 As Mencius says:"The time isn't as important as the terrain", so make full use of the terrain could make your work better. For example, choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. What's more, build your sandcastle at a proper distance from shore will obviously reduce the damage caused by waves, and building a moat along the castle can help foundation survive the rising tide. 
 \paragraph{\#4: Better material, Longer life}
@@ -148,9 +167,9 @@ It's worth noting that the interaction between sand and sea wave is far a lot mo
 Several assumptions are made in order to simplify our model.
 \begin{itemize}
     \item [1)]
-          The weather condition is suitable for sand castle building, namely, there is no wind and...
+          The weather condition is suitable for sbuilding sand castles. Namely, no huge waves occur.
     \item [2)]
-          The height of wave is the same, which we set as...
+          The sand castle foundation is set where the maximum height of wave does not exceed a certain value, which we set as 0.2m for convenience, when the tide rises.
     \item [3)]
           Our optimization goal is to acquire the largest top size while minimizing the lost of sand. Intuitively, if the side of the foundation is built as a gentle slope, the possibility of collapsing will be drastically reduced. However, with a fixed volume of sand, such a foundation will not allow any sophisticated carving.
     \item [4)]
@@ -158,15 +177,15 @@ Several assumptions are made in order to simplify our model.
     \item [5)]
           The top of the foundation is a flat platform whose surface is horizontal.
     \item [6)]
-          ...
+          The side further from the sea has the same slope as the side facing the sea, as when waves recede, its 
 \end{itemize}
 \subsection{Nomenclature}
 \begin{table}[H]
     \caption{States of Sand}
     \vspace{5pt}
     \centering
-    \begin{tabular}{p{3cm}p{12cm}}
-        \hline
+    \begin{tabular}{cl}
+    	\hline
         Symbol     & Meaning                                                \\
         \hline
         $\tau$     & the shear stress on a plane                            \\
@@ -183,6 +202,14 @@ Several assumptions are made in order to simplify our model.
         $f_A$      & the adhesive force                                     \\
         $V$        & the total amount of fluid present per particle contact \\
         $R$        & the radius of particle                                 \\
+        $c_{ijk}(t)$ & the cell mixed with sand and water to form the sandcastle in time t \\
+        $s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
+        $w_{ijk}(t)$ & the amount of water in  $c_{ijk}$ in time t                         \\
+        $p_{ijk}(t)$ & the proportion of sand-to-water mixture $c_{ijk}$ in time t         \\
+        $S(t)$       & the amount of sand in the sandcastle	int time t                      \\
+        $W(t)$       & the amount of water in the sandcastle in time t                     \\
+        $P(t)$       & the average proportion of sand-to-water mixture $c_{ijk}$ in time t \\
+        $F(t)$       & the erosion-Osmosis common effect of the sea water in time t        \\
         \hline
     \end{tabular}
     \label{bs2}
@@ -190,7 +217,7 @@ Several assumptions are made in order to simplify our model.
 
 \section{Modeling Under Waves and Tides}
 \par
-The 3-dimensional shape constructing problem is divided into two sub-problems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{Cellular Automata} to determine the best shape viewed from the top,...
+The 3-dimensional shape constructing problem is divided into two sub-problems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope, then construct another model with a modified version of \textbf{Cellular Automata} to determine the best shape viewed from the top.
 
 \subsection{Shape of the Slope: Mohr-Coulomb Criterion}
 We begin by determining the side shape of the sand castle foundation. Before Approaching the problem, we will briefly address the property of sand as a granular media.
@@ -203,7 +230,7 @@ Various water contents produce different liquid bridge distributions, which will
     \caption{States of Sand}
     \vspace{10pt}
     \centering
-    \begin{tabular}{p{3.5cm}p{2cm}p{6cm}p{2cm}}
+    \begin{tabular}{cccl}
         \hline
         Liquid Content   & State     & Description                                    & Schematic                  \\
         \hline
@@ -317,11 +344,11 @@ We use \texttt{Python}, a script language to construct our \textbf{cellular auto
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[a]{0.5\linewidth}
+    \begin{subfigure}[a]{\linewidth}
         \includegraphics[width=\linewidth]{Figure_1.eps}
         \caption{Sand Cluster Loss and Water Penetration}
     \end{subfigure}
-    \begin{subfigure}[c]{0.4\linewidth}
+    \begin{subfigure}[c]{0.7\linewidth}
         \includegraphics[width=\linewidth]{Figure_2.eps}
         \caption{After 200 Wave Impacts}
     \end{subfigure}
@@ -337,7 +364,7 @@ To solve for the best shape of the slope, the necessary information about sand i
     \caption{States of Sand}
     \vspace{10pt}
     \centering
-    \begin{tabular}{p{4cm}p{2cm}p{2cm}}
+    \begin{tabular}{ccc} 
         \hline
         Physical Quantities & Values    & Units    \\
         \hline
@@ -352,8 +379,35 @@ To solve for the best shape of the slope, the necessary information about sand i
 \end{table}
 \par
 It is not sensible to embark on a trip to the beach on a stormy day, so we assume that the near-shore wave is gentle, with its height not exceeding 20cm, or $D \in [0, 20](unit:cm)$.
-We first assume that..
-
+We adopt $\Gamma = 72.8mN/m$, $\mu = 0.55$, $\rho = 1631kg/m^3$, $R = 2mm$ and $g = 9.81m/s^2$. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm, height = 6.67cm]{sand5.png}
+	\caption{A Windows Terminal.}
+	\label{the shape of the slope}
+\end{figure}
+\begin{table}[H]
+	\caption{States of Sand}
+	\vspace{10pt}
+	\centering
+	\begin{tabular}{ccc} 
+		\hline
+		Height(m) & Slope     \\
+		\hline
+		0.02            & 0.58     \\
+		0.04            & 0.58  \\
+		0.06            & 0.59      \\
+		0.08            & 0.60    \\
+		0.10            & 0.60      \\
+		0.12			& 0.61 \\
+		0.14  			& 0.63\\
+		0.16			& 0.66\\
+		0.18			& 0.71\\
+		0.20            & 0.88 \\
+		\hline
+	\end{tabular}
+	\label{bs2}
+\end{table}
 \section{Modeling Under Rain}
 \subsection{Model Adaptations}
 Rain differs from waves and sands in the following aspects: its continuity, and its quantity. So we modify our Cellular Automata model to adapt to the new conditions.
@@ -387,12 +441,12 @@ we initially wish to create a three dimensional matrix to represent the situatio
     \item [3)]
           The evaporation of liquid is neglected.
 \end{itemize}
-\subsection{Nomenclature}
+\subsection{Review on Nomenclature}
 \begin{table}[H]
     \caption{Notation Table}
     \vspace{10pt}
     \centering
-    \begin{tabular}{ |l| p{5cm}| }
+    \begin{tabular}{ |l| p{5cm}| } 
         \hline
         symbol       & meaning                                                             \\
         \hline
@@ -408,7 +462,7 @@ we initially wish to create a three dimensional matrix to represent the situatio
     \end{tabular}
     \label{bs1}
 \end{table}
-\subsection{model}
+\subsection{Model}
 We define the expression when we just finish build the sandcastle.
 $$  P(t_0) = \frac{S(t_0)}{W(t_0)} = \frac{\sum_{i,j,k}s_{ijk}(t_0)}{\sum_{i,j,k}w_{ijk}(t_0)} = p_{ijk}(t_0) $$
 \par
@@ -484,7 +538,7 @@ The effect of density is illstrated in Figure[x,c], which is not obvious compare
     \caption{}
     \vspace{10pt}
     \centering
-    \begin{tabular}{p{6.5cm}p{6.5cm}}
+    \begin{tabular}{p{6.5cm}p{6.5cm}} \\ 
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=6cm, height=5cm]{sand1.png}
         \end{minipage}
@@ -511,29 +565,36 @@ Not now. Wait for tomorrow or something.
 Just like any other model, the one presented above has its Strengths and Weaknesses. Some major points are listed below.
 \begin{itemize}
     \item [1)]
-          The use of Cellular Automata enables our model to predict erosion of any possible shape.
+	    \textbf{Flexibiliry and extendibility}\\
+	    The use of Cellular Automata enables our model to predict erosion of any possible shape. For those who are not satisfied with a dull, oval-like shape, our model can assist them in finding more interesting shapes with relatively small losses.
     \item [2)]
-
+	    \textbf{Taking Future into Consideration}\\
+	    Cellular Automata can simulate the whole life-cycle of the sand castle foundation. Thus we are judging a shape by not only its current performance, but also how it performs after its shape has been changed.
     \item [3)]
-          ...
+	    \textbf{Taking into Consideration the Height of Waves}\\
+	    Due to tidal effects, the height of the waves is not a constant. From the analysis in section 3.1, the shape identified can resist waves from t
 \end{itemize}
 \subsection{Weaknesses}
 \begin{itemize}
     \item [1)]
-          Our model in section 3.1 does not consider the impact of the wave, which...
+    \textbf{Not accurate enough}\\
+    Our model in section 3.1 is actually an approximation of reality, as in capillary state, the amount of water is very close to saturation, which means liquid bridges only play a minor role in stabilizing the sand castle foundation. Even though in Funicular state, where the cohesive stress $s_A$ increases monotonically with water content for most of the time, the two states differ in properties and will bring loss to our model.
     \item [2)]
-          ...
-    \item [3)]
-          ...
+    \textbf{Simplistic Assumptions}\\
+    To acquire computability, we simplify the effect of waves to be wetting and hitting the surface. Nevertheless, the flow direction is also of vital significance, about which we fail to fully consider.
+    
 \end{itemize}
 
-\textcolor{cyan}{This is a test figure. Remember to delete me.}
+\section{Future Developments}
+\par 
+We can 
+%\textcolor{cyan}{This is a test figure. Remember to delete me.}
 
 
 
-This is some example text\footnote{\label{myfootnote}Hello footnote}.
+%This is some example text\footnote{\label{myfootnote}Hello footnote}.
 
-I'm referring to footnote \ref{myfootnote}.
+%I'm referring to footnote \ref{myfootnote}.
 
 
 \newpage
