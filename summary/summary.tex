@@ -493,8 +493,7 @@ for i in range(5):
     sim.update_life()
     sim.drop_dead()
     fig.add_subplot(230 + i + 2)
-    plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
-    \end{minted}
+    plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)    \end{minted}
 \end{longlisting}
 \begin{figure}[H]
     \centering
@@ -509,7 +508,6 @@ for i in range(5):
     \label{fig:simulation_process}
     \caption{Sample Simulation Process}
 \end{figure}
-
 
 \subsection{Calculate \& Simulate Results}
 Briefly review the equation derived in section 3.1
@@ -666,18 +664,50 @@ The final conclusive result would be shown in Figure \ref{fig:result} and Table 
 
 \section{Modeling Under Rain}
 \subsection{Model Adaptations}
-Rain differs from waves and sands in the following aspects: its continuity, and its quantity. So we modify our Cellular Automata model to adapt to the new conditions.
-\paragraph{Adaptations}
-\begin{itemize}
-    \item [1)]
-          In our previous model, wave is modeled as discrete motions.
-    \item [2)]
-          Rainwater can wet our model in a relatively short time.
-    \item [3)]
+Rain differs from waves and sands in the following aspects: its continuity, and its quantity. We first analyze how the water content in our sand castle foundation changes over time when the rain is falling using \textbf{Horton's Equation} to analyze how deep rain water permeates into the foundation. Thus by acquiring distribution of water, we can recalculate the critical angle at different depth to decide whether our model can still function.
+\subsection{Change Over Time}
+First we introduce Horton's Equation
+$f_t = f_c + (f_0 - f_c)e^{-kt}$
+where $f_t$ stands for infiltration capacity into soil, $f_c$ stands for the minimum value of $f_t$, $f_0$ stands for maximum value of $f_t$, $t$ stands for time from beginning of storm and $k$ stands for decay coefficient. Assuming a medium rainfall intensity of 30mm/h and 60mm/h, the information of sand concerning these factors is shown in the following table
+\begin{table}[H]
+	\caption{States of Sand}
+	\vspace{10pt}
+	\centering
+	\begin{tabular}{cc}
+		\hline
+		Time(min) & Infiltration Rate (30mm/h) & Infiltration Rate (60mm/h) \\
+		\hline
+		3      & 36.5   & 49.0 \\
+		6      & 36.4   & 49.0 \\
+		9      & 32.9   & 38.5 \\
+		12      & 29.8  & 31.8 \\
+		15      & 29.3  & 27.3 \\
+		18     & 29.5   & 27.5 \\
+		21      & 29.4  & 26.0 \\
+		24      & 29.4  & 25.6 \\
+		\hline
+	\end{tabular}
+	\label{bs2}
+\end{table}
+\subsection{Change Over Depth}
+With the information above, we can calculate the amount of water at different height. Recapture the equation that we derived in Section 3 to calculate the critical angle
+$$ tan\theta_c = \mu + \frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}sec[tan^{-1}(\mu)] $$
+as $\mu$, $\Gamma$ and $R$ will not be influenced by the amount of water in the foundation, the only factor influenced here is $\rho$, which increases due to the increasing amount of water.
+\begin{figure}[H]
+	\centering
+	\caption{Under rain: 30mm/h}
+	\includegraphics[width=6cm, height = 4.2cm\linewidth]{rain1.png}
+	\label{fig:result}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\caption{Under rain: 60mm/h}
+	\includegraphics[width=6cm, height = 4.2cm\linewidth]{rain2.png}
+	\label{fig:result}
+\end{figure}
+The critical angle is changing, however in an extremely small manner. In this sense, our model is also adaptive when it is raining. 
 
-\end{itemize}
-\subsection{Shape Alteration}
-As a result, our model is not the most preferable option under the rain. Shape alterations have to be made if we want our sand castle foundation to last longer.
+%As a result, our model is not the most preferable option under the rain. Shape alterations have to be made if we want our sand castle foundation to last longer.
 \section{Determine the Best Sand-to-water Proportion}
 \subsection{Assumptions \& Nomenclature}
 \textcolor{cyan}{ADD A CURVE FIGURE HERE, DRAWING!}
@@ -810,11 +840,6 @@ The effect of density is illstrated in Figure[x,c], which is not obvious compare
     \end{tabular}
     \label{bs2}
 \end{table}
-\paragraph{Top View Shape}
-DenDen dl has done a lot of parameter adjusting jobs...those are exactly what we need here.
-\subsection{Model Under Rain}
-Not now. Wait for tomorrow or something.
-
 
 \section{Strengths and Weaknesses}
 \subsection{Strengths}
