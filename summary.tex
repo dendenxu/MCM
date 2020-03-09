@@ -114,12 +114,7 @@ And a beach is where these three are combined, drawing people all around towards
 \par
 Magically but not randomly, sand gets sticky when combined with water, due to the most obvious physical theorem: surface tension and atmosphere pressure. From previous people's work, we've know that this buff comes from the water bridge formed between sand particles, which can significantly cluster together during the increasing water-sand portion\autocite{pakpour2012construct,mitarai2006wet,kudrolli2008sticky}. Kudrolli and Arshad has visualized the bridge between sand like Figure \ref{fig:water_bridge}.
 \par
-<<<<<<< HEAD
 And that's the magic that glue our favorite sand castle together, which is one of the most entertainment for enthusiastic beach goers. However, being built near the water that melts mud and our wet sand, all sand castles have to face the fate that they'll get too wet to hold its own weight and the impact from sea waves. That's because the water bridge has another property of clustering together\autocite{kudrolli2008sticky}. When you throw a pile of sand into water, they behave just as when they're completely dry, melting down like fluid. Thus beach castle builder might want to make their sand castle last longer than those build arbitrarily than others, which is also the purpose of this article.
-=======
-And that's the magic that glue our favorite sand castle together, which is one of the most entertainment for enthusiastic beach goers. However, being built near the water that melts mud and our wet sand, all sand castles have to face the fate that they'll g et too wet to hold its own weight and the impact from sea waves. That's because the water bridge has another property of clustering together\autocite{kudrolli2008sticky}. When you throw a pile of sand into water, they behave just as when they're completely dry, melting down like fluid. That is, sand castles lasts for only a period of time. Thus beach castle builder might want to make their sand castle last longer than those build arbitrarily than others, which is also the purpose of this article.
-
->>>>>>> 41791c65690afc4c2eb94bdef0ba84e26bfc9b6b
 
 \begin{figure}
     \centering
@@ -146,56 +141,52 @@ It's worth noting that the interaction between sand and sea wave is far a lot mo
 \subsection{Assumptions}
 Several assumptions are made in order to simplify our model.
 \begin{itemize}
-	\item [1)] 
-	The weather condition is suitable for sand castle building, namely, there is no wind and...
-	\item [2)]
-	The height of wave is the same, which we set as...
-	\item [3)]
-	Our optimization goal is to acquire the largest top size while minimizing the lost of sand. Intuitively, if the side of the foundation is built as a gentle slope, the possibility of collapsing will be drastically reduced. However, with a fixed volume of sand, such a foundation will not allow any sophisticated carving.
-	\item [4)]
-	Sand grains are regarded as tiny spheres. In our foundation, these grains are of the same size and are closely packed. 
-	\item [5)]
-	The top of the foundation is a flat platform whose surface is horizontal.
-	\item [6)]
-	...
+    \item [1)]
+          The weather condition is suitable for sand castle building, namely, there is no wind and...
+    \item [2)]
+          The height of wave is the same, which we set as...
+    \item [3)]
+          Our optimization goal is to acquire the largest top size while minimizing the lost of sand. Intuitively, if the side of the foundation is built as a gentle slope, the possibility of collapsing will be drastically reduced. However, with a fixed volume of sand, such a foundation will not allow any sophisticated carving.
+    \item [4)]
+          Sand grains are regarded as tiny spheres. In our foundation, these grains are of the same size and are closely packed.
+    \item [5)]
+          The top of the foundation is a flat platform whose surface is horizontal.
+    \item [6)]
+          ...
 \end{itemize}
 \subsection{Nomenclature}
 \begin{table}[H]
-	\caption{States of Sand}
-	\vspace{5pt}
-	\centering
-	\begin{tabular}{p{3cm}p{12cm}}
-		\hline
-		Symbol & Meaning \\
-		\hline
-		$\tau$   & the shear stress on a plane \\
-		$\tau_f$ & the shear stress on the failure plane\\
-		$\mu$    & the internal friction coefficient \\
-		$\sigma$ & the normal compressible stress on a plane \\
-		$\sigma_f$ & the normal compressible stree on the failure plane \\
-		$\rho$   & the density of sand \\ 
-		$\theta_c$ & the critical angle of a sandpile\\
-		$D$ & the height from the top of the sand pile \\
-		$P$ & the pressure[] \\
-		$\Gamma$ & the surface tension of water \\
-		$s_A$ & the adhesive stress \\
-		$f_A$ & the adhesive force \\
-		$V$ & the total amount of fluid present per particle contact \\
-		$R$ & the radius of particle \\
-		\hline       
-	\end{tabular}
-	\label{bs2}
+    \caption{States of Sand}
+    \vspace{5pt}
+    \centering
+    \begin{tabular}{p{3cm}p{12cm}}
+        \hline
+        Symbol     & Meaning                                                \\
+        \hline
+        $\tau$     & the shear stress on a plane                            \\
+        $\tau_f$   & the shear stress on the failure plane                  \\
+        $\mu$      & the internal friction coefficient                      \\
+        $\sigma$   & the normal compressible stress on a plane              \\
+        $\sigma_f$ & the normal compressible stree on the failure plane     \\
+        $\rho$     & the density of sand                                    \\
+        $\theta_c$ & the critical angle of a sandpile                       \\
+        $D$        & the height from the top of the sand pile               \\
+        $P$        & the pressure[]                                         \\
+        $\Gamma$   & the surface tension of water                           \\
+        $s_A$      & the adhesive stress                                    \\
+        $f_A$      & the adhesive force                                     \\
+        $V$        & the total amount of fluid present per particle contact \\
+        $R$        & the radius of particle                                 \\
+        \hline
+    \end{tabular}
+    \label{bs2}
 \end{table}
 
 
 \section{Modeling Under Waves and Tides}
 
 \par
-<<<<<<< HEAD
-The 3-dimensional shape constructing problem is divided into two subproblems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{a modified version of Cellular Automata} to determine the best shape viewed from the top,...
-=======
 The 3-dimensional shape constructing problem is divided into two sub-problems. We first establish the model using the \textbf{Mohr-Coulomb Criterion} to decide the shape of the slope. We then construct another model with a modified version of \textbf{Cellular Automata} to determine the best shape viewed from the top,...
->>>>>>> 41791c65690afc4c2eb94bdef0ba84e26bfc9b6b
 
 \subsection{Shape of the Slope: Mohr-Coulomb Criterion}
 
@@ -207,25 +198,25 @@ In our assumptions, sand particles are considered as identical tiny spheres. If 
 Various water contents produce different liquid bridge distributions, which will influence the properties of sand.
 
 \begin{table}[H]
-	\caption{States of Sand}
-	\vspace{10pt}
-	\centering
-	\begin{tabular}{p{4cm}p{2cm}p{4cm}p{4cm}}
-		\hline
-		Liquid Content & State & Description & left for future use \\
-		\hline
-		No  			  & Dry   	    & 000          & 000                    \\
-		Small  			  & Pendular    & 000     	   & 000                        \\
-		Middle  		  & Funicular   & 000    	   & 000                        \\
-		Almost saturated  & capillary & 000          & 000                        \\
-		More  			  & Slurry      & 000          & 000                        \\  
-		\hline       
-	\end{tabular}
-	\label{bs2}
+    \caption{States of Sand}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{p{4cm}p{2cm}p{4cm}p{4cm}}
+        \hline
+        Liquid Content   & State     & Description & left for future use \\
+        \hline
+        No               & Dry       & 000         & 000                 \\
+        Small            & Pendular  & 000         & 000                 \\
+        Middle           & Funicular & 000         & 000                 \\
+        Almost saturated & capillary & 000         & 000                 \\
+        More             & Slurry    & 000         & 000                 \\
+        \hline
+    \end{tabular}
+    \label{bs2}
 \end{table}
 \par
 When the wave gets into contact with the foundation, the surface area is in slurry state and there exists no cohesive interaction between the particles, which makes it very hard, if not impossible, to prevent sand loss. Nevertheless, collapses after the wave resides can cause more harm to the foundation, which can be avoided by alternating the shape.
-\par 
+\par
 For dry sand, the failure criterion is given in terms of the shear stress $\tau$, the normal compressible stress $\sigma$ and the internal friction $\mu$ as
 $$\tau > \mu\sigma$$
 This is simply the friction formula with different notations. For wet sand, we consider a sandpile with a normal adhesive stress $s_A$ across every plane, in addition to the stress caused by weight. The equation(1) is then modified as
@@ -235,9 +226,9 @@ $$\tau_f = \rho gDsin\theta_c \qquad and \qquad \sigma_f = \rho gDcos\theta_c$$
 where $\theta_c$ is the critical angle, $D$ is the height of the sandpile and $\rho$ is the density of sand. Therefore, combine the equations above, to solve for $\theta_c$ is to solve the equation
 $$\mu = tan\theta_c(D)\bigg(1 + \frac{s_A}{\rho gDcos\theta_c(D)}\bigg)$$
 \par
-The only unknown factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturation. 
+The only unknown factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturation.
 \par
-In this case, with water serves as lubricate, it makes sense to model sand particles as frictionless spheres. The pressure difference is then given by [] 
+In this case, with water serves as lubricate, it makes sense to model sand particles as frictionless spheres. The pressure difference is then given by []
 $$P = -\frac{\Gamma}{\sqrt{V/2\pi R}}$$
 where $\Gamma$ is the surface tension of the fluid, V is the total amount of fluid present per particle contact, and R the radius of the particle. The adhesive force is given by
 $$f_A = 2\pi \Gamma R$$
@@ -246,49 +237,49 @@ Note that (with certain conditions like distance between grains remains constant
 Assume our foundation contains sand particles that are closely packed. Such structure means there is an average of 6 contacts per square.
 
 \subsection{Top View Shape}
-\par 
+\par
 We used a modified version of\textbf{ cellular automata} to simulate the impact of tides and waves. There are several factors that are taken into consideration:
-\par 
+\par
 \begin{itemize}
-	\item [1)] 
-	...     
-	\item [2)]
-	...
-	\item [3)]
-	...
+    \item [1)]
+          ...
+    \item [2)]
+          ...
+    \item [3)]
+          ...
 \end{itemize}
 
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Figure_1.eps}
-	\caption{A Windows Terminal.}
-	\label{fig:Terminal}
+    \includegraphics[width=\linewidth]{Figure_1.eps}
+    \caption{A Windows Terminal.}
+    \label{fig:Terminal}
 \end{figure}
 \textcolor{cyan}{This is a test figure. Remember to delete me.}
 \begin{figure}[H]
-	\includegraphics[width=\linewidth]{Figure_2.eps}
-	\caption{A Windows Terminal.}
-	\label{fig:Terminal}
+    \includegraphics[width=\linewidth]{Figure_2.eps}
+    \caption{A Windows Terminal.}
+    \label{fig:Terminal}
 \end{figure}
 \subsection{Calculate \& Simulate Results}
 Briefly review the equation derived in section 3.1
 $$tan\theta_c = \mu + \frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}sec[tan^{-1}(k)]$$
 To solve for the best shape of the slope, the necessary information about sand is listed below
 \begin{table}[H]
-	\caption{States of Sand}
-	\vspace{10pt}
-	\centering
-	\begin{tabular}{p{4cm}p{2cm}p{2cm}}
-		\hline
-		Physical Quantities & Values & Units 	\\
-		\hline
-		$\Gamma$		  & 72.8   	    & $mN/m$              \\
-		$\mu$  			  & 0.55~0.60   & -     	            \\
-		$\rho$ 			  & 1631     &  $kg/m^3$          \\
-		$R$ 			  & 0.05~2   & $mm$               \\
-		$g$  			  & 9.81      & $m/s^2$     \\
-		\hline
-	\end{tabular}
-	\label{bs2}
+    \caption{States of Sand}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{p{4cm}p{2cm}p{2cm}}
+        \hline
+        Physical Quantities & Values    & Units    \\
+        \hline
+        $\Gamma$            & 72.8      & $mN/m$   \\
+        $\mu$               & 0.55~0.60 & -        \\
+        $\rho$              & 1631      & $kg/m^3$ \\
+        $R$                 & 0.05~2    & $mm$     \\
+        $g$                 & 9.81      & $m/s^2$  \\
+        \hline
+    \end{tabular}
+    \label{bs2}
 \end{table}
 \par
 It is not sensible to embark on a trip to the beach on a stormy day, so we assume that the near-shore wave is gentle, with its height not exceeding 20cm, or $D \in [0, 20](unit:cm)$.
@@ -299,21 +290,21 @@ We first assume that..
 \section{Determine the Best Sand-to-water Proportion}
 \section{Other Ways to Make Our Sand Castle Last Longer}
 \subsection{Dig a Moat}
-Building a moat can help our sand castle foundation to survive the rising tide. 
+Building a moat can help our sand castle foundation to survive the rising tide.
 \subsection{Make It Compact}
 There are two advantages of making a compact foundation.
 \paragraph{More Contact Points}
 \paragraph{Fewer Cracks}
 \subsection{Further From the Shore}
-According to our analysis in section 5, the optimal sand-to-water proportion is 1\%. 
+According to our analysis in section 5, the optimal sand-to-water proportion is 1\%.
 (This is not possible if the castle can be reached by wave...)
 \subsection{Finer Sand}
-Finer sand is a bonus because by constructing our sand castle foundation using it, the foundation has a greater critical angle. That is because the term $R$, which is a part of the denominator, decreases and (enlarge?not the proper word) the value of $tan\theta_c$. 
+Finer sand is a bonus because by constructing our sand castle foundation using it, the foundation has a greater critical angle. That is because the term $R$, which is a part of the denominator, decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
 \subsection{Special Material}
 \paragraph{Glue}
-Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it also keeps water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation. 
+Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it also keeps water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation.
 \paragraph{Mixture}
-Concrete, a material that everyone is familiar with, has sand as its ingredient. 
+Concrete, a material that everyone is familiar with, has sand as its ingredient.
 \section{Sensitivity Analysis}
 \subsection{Model Under Waves and Tides}
 \paragraph{Side View Shape}
@@ -326,21 +317,21 @@ Not now. Wait for tomorrow or something.
 \subsection{Strengths}
 Just like any other model, the one presented above has its Strengths and Weaknesses. Some major points are listed below.
 \begin{itemize}
-	\item [1)] 
-	The use of Cellular Automata enables our model to predict erosion of any possible shape. 
-	\item [2)]
-	
-	\item [3)]
-	...
+    \item [1)]
+          The use of Cellular Automata enables our model to predict erosion of any possible shape.
+    \item [2)]
+
+    \item [3)]
+          ...
 \end{itemize}
 \subsection{Weaknesses}
 \begin{itemize}
-	\item [1)] 
-	Our model in section 3.1 does not consider the impact of the wave, which...  
-	\item [2)]
-	...
-	\item [3)]
-	...
+    \item [1)]
+          Our model in section 3.1 does not consider the impact of the wave, which...
+    \item [2)]
+          ...
+    \item [3)]
+          ...
 \end{itemize}
 
 \textcolor{cyan}{This is a test figure. Remember to delete me.}

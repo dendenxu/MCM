@@ -1,7 +1,7 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}%
 \contentsline {subsection}{\numberline {1.1}Problem Background}{1}%
-\contentsline {subsection}{\numberline {1.2}Our Work}{1}%
+\contentsline {subsection}{\numberline {1.2}Our Work}{2}%
 \contentsline {paragraph}{Side Slope Determination}{2}%
 \contentsline {paragraph}{Top View Determination}{2}%
 \contentsline {paragraph}{Other Factors}{2}%
@@ -9,13 +9,13 @@
 \contentsline {subsection}{\numberline {2.1}Assumptions}{2}%
 \contentsline {subsection}{\numberline {2.2}Nomenclature}{3}%
 \contentsline {section}{\numberline {3}Modeling Under Waves and Tides}{3}%
-\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{4}%
+\contentsline {subsection}{\numberline {3.1}Shape of the Slope: Mohr-Coulomb Criterion}{3}%
 \contentsline {subsection}{\numberline {3.2}Top View Shape}{5}%
 \contentsline {subsection}{\numberline {3.3}Calculate \& Simulate Results}{6}%
 \contentsline {section}{\numberline {4}Modeling Under Rain}{7}%
 \contentsline {section}{\numberline {5}Determine the Best Sand-to-water Proportion}{7}%
 \contentsline {section}{\numberline {6}Other Ways to Make Our Sand Castle Last Longer}{7}%
-\contentsline {subsection}{\numberline {6.1}Build a Moat}{7}%
+\contentsline {subsection}{\numberline {6.1}Dig a Moat}{7}%
 \contentsline {subsection}{\numberline {6.2}Make It Compact}{7}%
 \contentsline {paragraph}{More Contact Points}{7}%
 \contentsline {paragraph}{Fewer Cracks}{7}%
