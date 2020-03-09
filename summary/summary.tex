@@ -91,8 +91,8 @@
 \begin{center}
     \Large \textbf{Kingdom Built on a Pile of Sand: Slow and Steady}
 \end{center}
-Hello, dear reader of \textit{Fun in the sun}! With summer drawing near, 
-In this article, we will introduce little tricks about building the perfect sandcastle so that 
+Hello, dear reader of \textit{Fun in the sun}! With summer drawing near,
+In this article, we will introduce little tricks about building the perfect sandcastle so that
 \newpage
 
 \tableofcontents
@@ -188,31 +188,31 @@ In our assumptions, sand particles are considered as identical tiny spheres. If 
 Various water contents produce different liquid bridge distributions, which will influence the properties of sand.
 
 \begin{table}[H]
-	\caption{States of Sand}
-	\vspace{10pt}
-	\centering
-	\begin{tabular}{p{3.5cm}p{2cm}p{6cm}p{2cm}}
-		\hline
-		Liquid Content & State & Description & Schematic \\
-		\hline
-		No  			  & Dry   	    & No cohesive force exists   & \begin{minipage}{0.5\textwidth}
-														 \includegraphics[width=1.5cm, height=1.125cm]{s1.png}
-														\end{minipage}                   \\
-		Small  			  & Pendular    & Liquid bridges start to form  & \begin{minipage}{0.1\textwidth}
-														\includegraphics[width=1.5cm, height=1.125cm]{s2.png}
-														\end{minipage}                   \\
-		Middle  		  & Funicular   & Liquid bridges and liquid-filled pores coexist				 & \begin{minipage}{0.1\textwidth}
-														\includegraphics[width=1.5cm, height=1.125cm]{s3.png}
-														\end{minipage}                   \\
-		Almost saturated  & capillary & Almost all pores are filled with the liquid &   			\begin{minipage}{0.1\textwidth}
-														\includegraphics[width=1.5cm, height=1.125cm]{s4.png}
-														\end{minipage}                   \\
-		More  			  & Slurry      & No cohesive force exists&\begin{minipage}{0.1\textwidth}
-														\includegraphics[width=1.5cm, height=1.125cm]{s5.png}
-														\end{minipage}                   \\  
-		\hline       
-	\end{tabular}
-	\label{bs2}
+    \caption{States of Sand}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{p{3.5cm}p{2cm}p{6cm}p{2cm}}
+        \hline
+        Liquid Content   & State     & Description                                    & Schematic                  \\
+        \hline
+        No               & Dry       & No cohesive force exists                       & \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=1.5cm, height=1.125cm]{s1.png}
+        \end{minipage}  \\
+        Small            & Pendular  & Liquid bridges start to form                   & \begin{minipage}{0.1\textwidth}
+            \includegraphics[width=1.5cm, height=1.125cm]{s2.png}
+        \end{minipage} \\
+        Middle           & Funicular & Liquid bridges and liquid-filled pores coexist & \begin{minipage}{0.1\textwidth}
+            \includegraphics[width=1.5cm, height=1.125cm]{s3.png}
+        \end{minipage} \\
+        Almost saturated & capillary & Almost all pores are filled with the liquid    & \begin{minipage}{0.1\textwidth}
+            \includegraphics[width=1.5cm, height=1.125cm]{s4.png}
+        \end{minipage} \\
+        More             & Slurry    & No cohesive force exists                       & \begin{minipage}{0.1\textwidth}
+            \includegraphics[width=1.5cm, height=1.125cm]{s5.png}
+        \end{minipage} \\
+        \hline
+    \end{tabular}
+    \label{bs2}
 \end{table}
 \par
 When the wave gets into contact with the foundation, the surface area is in slurry state and there exists no cohesive interaction between the particles, which makes it very hard, if not impossible, to prevent sand loss in this process. Nevertheless, collapses after the wave resides can cause more harm to the foundation, which can be avoided by alternating the shape.
@@ -230,11 +230,11 @@ $$\mu = tan\theta_c(D)\bigg(1 + \frac{s_A}{\rho gDcos\theta_c(D)}\bigg)$$
 \par
 The only unknown factor is $s_A$, the adhesive stress across the plane. According to (Thomas C.H and Alex J.L -fix later)'s study, the value of $s_A$ is determined by water content and there are three regimes as a function of the added-fluid volume. We now focus only on the state where the water content is close to saturation.
 \par
-In this case, with water serves as lubricate, it makes sense to model sand particles as frictionless spheres. The pressure difference is then given by [] 
- $$P = -\frac{\Gamma}{\sqrt{V/2\pi R}}$$
+In this case, with water serves as lubricate, it makes sense to model sand particles as frictionless spheres. The pressure difference is then given by []
+$$P = -\frac{\Gamma}{\sqrt{V/2\pi R}}$$
 where $\Gamma$ is the surface tension of the fluid, V is the total amount of fluid present per particle contact, and R the radius of the particle. According to the study of [fix later], the adhesive force in this state is given by
 $$f_A = 2\pi \Gamma R$$
-Note that (with certain conditions like distance between grains remains constant)the term $V$ which denotes the volume of liquid per particle does not appear in equation(6). 
+Note that (with certain conditions like distance between grains remains constant)the term $V$ which denotes the volume of liquid per particle does not appear in equation(6).
 \par
 We now focus on obtaining the value of $s_A$ via $f_A$, whose value can be calculated with the equation above. Assume our foundation contains sand particles that are closely packed. In such a structure, we have $\phi_V = \sqrt(2)/6$, where $\phi_V$ stands for volume fraction which is defined as ratio of the volume of particles to the total volume. The average number of contacts per unit area will be $(3\phi_V/\pi R^2)$. With $f_A$ representing cohesive force of a single liquid bridge, we can then write
 $$ s_A = \frac{f_A}{\sqrt{2}R^2}$$
@@ -296,12 +296,12 @@ We first assume that..
 Rain differs from waves and sands in the following aspects: its continuity, and its quantity. So we modify our Cellular Automata model to adapt to the new conditions.
 \paragraph{Adaptations}
 \begin{itemize}
-	\item [1)]
-	In our previous model, wave is modeled as discrete motions. 
-	\item [2)]
-	Rainwater can wet our model in a relatively short time. 
-	\item [3)]
-	
+    \item [1)]
+          In our previous model, wave is modeled as discrete motions.
+    \item [2)]
+          Rainwater can wet our model in a relatively short time.
+    \item [3)]
+
 \end{itemize}
 \subsection{Shape Alteration}
 As a result, our model is not the most preferable option under the rain. Shape alterations have to be made if we want our sand castle foundation to last longer.
@@ -317,33 +317,33 @@ we initially wish to create a three dimensional matrix to represent the situatio
 \textcolor{cyan}{ADD TWO CELLULAR FIGURES HERE, DRAWING!}
 \subsection{Assumptions}
 \begin{itemize}
-	\item [1)]
-	waves and tides erode the sandcastle in a very short time, which means that the we can neglect Osmosis occurred during erosion.
-	\item [2)]
-	After eroded, the liquid left on sandcastle has ample time to penetrate.
-	\item [3)]
-	The evaporation of liquid is neglected.
+    \item [1)]
+          waves and tides erode the sandcastle in a very short time, which means that the we can neglect Osmosis occurred during erosion.
+    \item [2)]
+          After eroded, the liquid left on sandcastle has ample time to penetrate.
+    \item [3)]
+          The evaporation of liquid is neglected.
 \end{itemize}
 \subsection{Nomenclature}
 \begin{table}[H]
-	\caption{Notation Table}
-	\vspace{10pt}
-	\centering
-	\begin{tabular}{ |l| p{5cm}| }
-		\hline
-		symble       & meaning                                                             \\
-		\hline
-		$c_{ijk}(t)$ & the cell mixed with sand and water to form the sandcastle in time t \\
-		$s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
-		$w_{ijk}(t)$ & the amount of water in  $c_{ijk}$ in time t                         \\
-		$p_{ijk}(t)$ & the proportion of sand-to-water mixture $c_{ijk}$ in time t         \\
-		$S(t)$       & the amount of sand in the sandcastle	int time t                      \\
-		$W(t)$       & the amount of water in the sandcastle in time t                     \\
-		$P(t)$       & the average proportion of sand-to-water mixture $c_{ijk}$ in time t \\
-		$F(t)$       & the erosion-Osmosis common effect of the sea water in time t        \\
-		\hline
-	\end{tabular}
-	\label{bs1}
+    \caption{Notation Table}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{ |l| p{5cm}| }
+        \hline
+        symble       & meaning                                                             \\
+        \hline
+        $c_{ijk}(t)$ & the cell mixed with sand and water to form the sandcastle in time t \\
+        $s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
+        $w_{ijk}(t)$ & the amount of water in  $c_{ijk}$ in time t                         \\
+        $p_{ijk}(t)$ & the proportion of sand-to-water mixture $c_{ijk}$ in time t         \\
+        $S(t)$       & the amount of sand in the sandcastle	int time t                      \\
+        $W(t)$       & the amount of water in the sandcastle in time t                     \\
+        $P(t)$       & the average proportion of sand-to-water mixture $c_{ijk}$ in time t \\
+        $F(t)$       & the erosion-Osmosis common effect of the sea water in time t        \\
+        \hline
+    \end{tabular}
+    \label{bs1}
 \end{table}
 \subsection{model}
 We define the expression when we just finish build the sandcastle.
@@ -357,48 +357,48 @@ $$  P(t) = \frac{\sum_{i,j,k}s_{ijk}(t_0)}{\sum_{i,j,k}w_{ijk}(t_0)} \leq P_{ero
 \par
 where $P_{erode}$ refers to proportion that Funicular transforms to capillary state. Then we define the flow equation during erosion as follow:
 $$	E=
-\begin{cases}
-F & \text{the cell is being eroded by sea} \\
-0 & \text{else}
-\end{cases}
+    \begin{cases}
+        F & \text{the cell is being eroded by sea} \\
+        0 & \text{else}
+    \end{cases}
 $$
 \par
 As erosion occurs for a split second, we could just neglect the permeation to simplify our analysis. To obtain a probability model to evaluate the sand taken by waves, we need to acquire further understanding about the flow liquid. Here we use Navier-Stokes equations to describe the motion of viscous fluid substances.
 $$
-x \rho(\frac{\partial \upsilon}{\partial t} + \upsilon \cdot \nabla \upsilon) = -\nabla p + \nabla \cdot(\mu(\nabla \upsilon+(\nabla \upsilon)^T)-\frac{2}{3}\mu(\nabla \upsilon)I)+F\\\frac{\partial \rho}{\partial t}+\rho\nabla\cdot\vec{\upsilon}=0(continuity \ equations)
+    x \rho(\frac{\partial \upsilon}{\partial t} + \upsilon \cdot \nabla \upsilon) = -\nabla p + \nabla \cdot(\mu(\nabla \upsilon+(\nabla \upsilon)^T)-\frac{2}{3}\mu(\nabla \upsilon)I)+F\\\frac{\partial \rho}{\partial t}+\rho\nabla\cdot\vec{\upsilon}=0(continuity \ equations)
 $$
 \par
 After eroded we should find the cell completely eroded by tides and waves. Then by reference to Darcy's law and Huygens–Fresnel principle, We consider water permeating the sandcastle as follow:
 $$
-\upsilon=\frac{kA(p_b-p_a)}{\mu L}=\frac{kL(\Delta P)}{\mu}
+    \upsilon=\frac{kA(p_b-p_a)}{\mu L}=\frac{kL(\Delta P)}{\mu}
 $$
 \par
 where $k$ is the hydraulic permeability of sea water, $L$ is the length of one side of the cell, $\mu$ is the viscosity of sea water, $\Delta$ is the pressure differential between the two sides of the cell.As we assume that the sea water left on the surface of the sandcastle can totally penetrate. Then we could get for each cycle:
 $$
-L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit})\\
-(\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
+    L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit})\\
+    (\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
 $$
 \par
 Then We need to find out the longest time when the above constraints are met and the sandcastle exists.
 
 \section{Other Tricks to Make Our Sand Castle Last Longer}
 \subsection{Build a Moat}
-Building a moat can help our sand castle foundation to survive the rising tide. Before hitting 
+Building a moat can help our sand castle foundation to survive the rising tide. Before hitting
 \subsection{Make It Compact}
 There are two advantages of making a compact foundation.
 \paragraph{More Contact Points}
-In section 3.1, we assumed that sand particles are closely packed. 
-\paragraph{Fewer Cracks} 
+In section 3.1, we assumed that sand particles are closely packed.
+\paragraph{Fewer Cracks}
 \subsection{Further From the Shore}
 According to our analysis in section 5, the optimal sand-to-water proportion is 1\%.
 (This is not possible if the castle can be reached by wave...)
 \subsection{Finer Sand}
-Finer sand is a bonus because by constructing our sand castle foundation using finer sand, the foundation has a greater critical angle. That is because the radius of particles $R$ which is a part of the denominator decreases and (enlarge?not the proper word) the value of $tan\theta_c$. 
+Finer sand is a bonus because by constructing our sand castle foundation using finer sand, the foundation has a greater critical angle. That is because the radius of particles $R$ which is a part of the denominator decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
 \subsection{Special Material}
 \paragraph{Glue}
-Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used to protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it can also keep water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation. 
+Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used to protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it can also keep water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation.
 \paragraph{Mixture}
-Concrete, a material that everyone is familiar with, has sand as its ingredient. 
+Concrete, a material that everyone is familiar with, has sand as its ingredient.
 \subsection{Less Salty Water}
 Choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. This is because fresh water has a higher value of surface tension which appears in the numerator of the term $\frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}$. Thus Red Sea is not a perfect spot, but the Baltic Sea(poor English. better expression needed.)(footnote needed)
 Finer sand is a bonus because by constructing our sand castle foundation using it, the foundation has a greater critical angle. That is because the term $R$, which is a part of the denominator, decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
@@ -412,32 +412,32 @@ Concrete, a material that everyone is familiar with, has sand as its ingredient.
 \subsection{Model Under Waves and Tides}
 \paragraph{Side View Shape}
 \par
-There are multiple factors that may affect our side view shape model. We consider four of them: the internal friction coefficient $\mu$, radius of the sand particles $R$, density of sand $\rho$ and total height of the sand castle foundation $D$. 
-\par 
-Friction coefficient of sand varies by the amount of liquid in the system, the size of sand grains and other possible factors. Typically, this value ranges from 0.55-0.60. In figure[x.a], we test the effect of different friction coefficient ranging from 0.48 to 0.60. The curves with lighter colors, as illustrated in the figure, represent higher coefficients while those with darker colors represent lower coefficients. 
+There are multiple factors that may affect our side view shape model. We consider four of them: the internal friction coefficient $\mu$, radius of the sand particles $R$, density of sand $\rho$ and total height of the sand castle foundation $D$.
+\par
+Friction coefficient of sand varies by the amount of liquid in the system, the size of sand grains and other possible factors. Typically, this value ranges from 0.55-0.60. In figure[x.a], we test the effect of different friction coefficient ranging from 0.48 to 0.60. The curves with lighter colors, as illustrated in the figure, represent higher coefficients while those with darker colors represent lower coefficients.
 \par
 Figure[x.b] shows how the side view shape is influenced by radius of the sand particles, which varies between 0.5 to 2.0 milimeters. Curves with lighter colors represent small particle radiuses and those with darker colors represent greater radiuses.
-\par 
-The effect of density is illstrated in Figure[x,c], which is not obvious compared with the former two factors.  
+\par
+The effect of density is illstrated in Figure[x,c], which is not obvious compared with the former two factors.
 \begin{table}[H]
-	\caption{}
-	\vspace{10pt}
-	\centering
-	\begin{tabular}{p{6.5cm}p{6.5cm}}
-		\begin{minipage}{0.5\textwidth}
-	    \includegraphics[width=6cm, height=5cm]{sand1.png}
-		\end{minipage}             
-	    & \begin{minipage}{0.5\textwidth}
-	    	\includegraphics[width=6cm, height=5cm]{sand2.png}
-	    \end{minipage} \\      
+    \caption{}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{p{6.5cm}p{6.5cm}}
         \begin{minipage}{0.5\textwidth}
-        	\includegraphics[width=6cm, height=5cm]{sand3.png}
-        \end{minipage}   
-        & \begin{minipage}{0.5\textwidth}
-        	\includegraphics[width=6cm, height=5cm]{sand3.png}
+            \includegraphics[width=6cm, height=5cm]{sand1.png}
+        \end{minipage}
+         & \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=6cm, height=5cm]{sand2.png}
         \end{minipage} \\
-	\end{tabular}
-	\label{bs2}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=6cm, height=5cm]{sand3.png}
+        \end{minipage}
+         & \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=6cm, height=5cm]{sand3.png}
+        \end{minipage} \\
+    \end{tabular}
+    \label{bs2}
 \end{table}
 \paragraph{Top View Shape}
 DenDen dl has done a lot of parameter adjusting jobs...those are exactly what we need here.

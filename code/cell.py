@@ -5,7 +5,9 @@ import matplotlib as mpl
 
 class SandCastleSimulator2D:
     # Initialize the sand castle randomly
-    def __init__(self, width, depth, delta, initial_edge=None):
+    def __init__(self, width, depth, delta,
+                 initial_edge=None, shear_rate=1,
+                 humidify_rate=0.005, humidify_depth=1, initial_humidity=0.1):
         self.delta = delta
         assert (width > (self.delta * 2))
         self.width = width
@@ -13,7 +15,7 @@ class SandCastleSimulator2D:
         # The front of our sand castle
         if initial_edge is None:
             self.edge = depth - (
-                        (np.cos(np.linspace(-np.pi * 3, np.pi * 3, width)) + 1) * depth / 10 + depth / 2).round(0)
+                    (np.cos(np.linspace(-np.pi * 3, np.pi * 3, width)) + 1) * depth / 10 + depth / 2).round(0)
             # self.edge = np.random.normal(width / 2, width / 4, depth).round(0)
             # self.edge = depth - ((np.cos(np.linspace(-np.pi, np.pi, width)) + 1) * depth / 2).round(0)
             # self.edge = depth - (np.cos(np.linspace(0, np.pi / 2, width)) * depth).round(0)
@@ -22,7 +24,7 @@ class SandCastleSimulator2D:
             self.edge = initial_edge
         self.edge = np.asarray([0 if x < 0 else (depth - 1 if x > depth - 1 else x) for x in self.edge], dtype=int)
         self.life = np.array([[i >= self.edge[j] for j in range(width)] for i in range(depth)])
-        self.humidity = np.full((depth, width), fill_value=0.1)
+        self.humidity = np.full((depth, width), fill_value=initial_humidity)
         self.slope = np.zeros((width,), float)
         self.update_slope()
         sea_blue = np.array([0, 102, 153, 256]) / 256
@@ -36,9 +38,9 @@ class SandCastleSimulator2D:
         sea_wet_sand[128::] = np.tile(sea_blue, 128).reshape(128, 4)
         self.sea_wet_sand = mpl.colors.ListedColormap(sea_wet_sand)
 
-        self.shear_rate = 0.75
-        self.humidify_rate = 0.005
-        self.humidify_depth = 1
+        self.shear_rate = shear_rate
+        self.humidify_rate = humidify_rate
+        self.humidify_depth = humidify_depth
         self.osmotic_rate = 0.005
         self.osmotic_depth = 5
         self.longest = np.sqrt(2) * self.osmotic_depth * 2
@@ -46,7 +48,7 @@ class SandCastleSimulator2D:
         self.drop_dead()
 
         self.delta_humidity = np.flip(
-            np.exp(np.linspace(-10 * self.humidify_depth, 0, self.depth))) * self.humidify_rate
+            np.exp(np.linspace(-10 / self.humidify_depth, 0, self.depth))) * self.humidify_rate
         self.delta_humidity = np.tile(self.delta_humidity, self.width).reshape(self.width, self.depth)
         self.delta_humidity = np.transpose(self.delta_humidity)
 
@@ -94,9 +96,10 @@ class SandCastleSimulator2D:
         sine = abs(np.sin(self.slope))
 
         delta_shear = sine * self.shear_rate
-        for k in range(self.delta):
+        for k in range(self.delta * 2):
             for i in range(self.width):
-                if (delta_shear[i] + 1 / (1 - self.humidity[self.edge[i], i]) - 1) > 1:
+                if (cosine[i] > np.sqrt(2) / 2 or k < 1) and (
+                        delta_shear[i] + 1 / (1 - self.humidity[self.edge[i], i]) - 1) > 1:
                     self.edge[i] += 1 if self.edge[i] < self.depth - 1 else 0
                     delta_shear[i] -= delta_shear[i] / self.delta
             self.drop_prick()

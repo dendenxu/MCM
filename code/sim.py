@@ -67,8 +67,8 @@ desired_loss = desired_sum * desired_loss_rate
 # pm = np.asarray(pm)
 # pm = pm[0:pm.shape[0] // 2 + 1, :]
 #
-# np.save("permutation_10x10_quarter_2.npy", pm)
-
+# np.save("permutation_10x10_hermite.npy", pm)
+#
 
 # import matplotlib.pyplot as plt
 # import numpy as np
@@ -107,9 +107,9 @@ depth *= 10
 desired_sum *= 100
 desired_loss *= 100
 pm = np.load("permutation_10x10.npy")
-batch_size = delta * 5
+batch_size = delta * 2
 pminter = []
-[(pminter.append(10 * (interpolate.CubicSpline(np.linspace(0, 10, 10), pm[i]))(np.linspace(0, 10, 100)))) for i in
+[(pminter.append(10 * (interpolate.Akima1DInterpolator(np.linspace(0, 10, 10), pm[i]))(np.linspace(0, 10, 100)))) for i in
  range(pm.shape[0])]
 pminter = pminter[::2]
 pminter = pminter[::2]
@@ -136,5 +136,11 @@ for index, edge in enumerate(pminter):
 plt.figure()
 plt.plot(counter)
 plt.figure()
-plt.plot(pminter[np.argpartition(counter, -delta)[-delta]])
+# plt.plot(pminter[np.argpartition(counter, -delta)[-delta]])
+good = []
+for i in range(1, 20):
+    plt.plot(pminter[np.argpartition(counter, -i)[-i]])
+    # good.append(pminter[np.argpartition(counter, -i)[-i]])
+good = np.asarray(good)
 plt.ylim((0, 100))
+
