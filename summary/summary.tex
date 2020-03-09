@@ -85,14 +85,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \pagestyle{fancy}
-% Uncomment the next line to generate a Table of Contents
 
 
 \begin{center}
     \Large \textbf{Kingdom Built on a Pile of Sand: Slow and Steady}
 \end{center}
-Hello, dear reader of \textit{Fun in the sun}! With summer drawing near,
-In this article, we will introduce little tricks about building the perfect sandcastle so that
+Hello, dear readers of \textit{Fun in the sun}! 
+\par
+As Leonardo da Vinci says : Simplicity is the ultimate sophistication." Maybe you find it difficult to build Pyramids or Sphinx in deserts as Egyptians did. However, you will be soon in your element creating a long-lasting sandcastles on the seashore If you try some of our important tricks for you.
+\par
+When it comes to summer, building sand castles is definitely on the must-do list of beach goers. However, you may know how vulnerable they are if you have built a sand castle once. A gentle wave can cause a damaging collapse, and even if your sand castle fights its way through the hitting of waves, it will be eventually washed away by the waves and nothing will be left. What a pity! Is there a way to help our sand castles last longer? Well, recently, a team of MCM try to construct a mathematical model to determine an ideal Strategy to build a long-lasting sandcastle and finally tackled this problem.
+\paragraph{\#1: modify the shape of foundation}
+Well, If you're building from memory, then first envision your castle. Just like cars are streamlined to minimize resistance of the air, a well-designed shape of your foundation can evidently prevent waves to flush away the sand and erode your sandcastles. Maybe a shape that have a smaller contact surface or enables to reduce the impact of waves will make your castle's life longer. You may try our team's new design shown in the figure to turn a pile of sand into a spectacular sandcastle!
+\paragraph{\#2: proper sand-to-water proportion}
+An optimal sand-to-water mixture proportion makes your sandcastle support its own weight against rough waves. Just a little bit of water enables liquid bridge forms between grains, which enables your sandcastle stand as a whole. Too much water, however, will destabilize the material and it will be easily washed away. In fact, our suggestion for you about the optimum liquid volume fraction is about.
+\paragraph{\#3: use terrain to your advantage}
+As Mencius says:"The time isn't as important as the terrain", so make full use of the terrain could make your work better. For example, choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. What's more, build your sandcastle at a proper distance from shore will obviously reduce the damage caused by waves, and building a moat along the castle can help foundation survive the rising tide. 
+\paragraph{\#4: Better material, Longer life}
+If you are devoted to try all methods as you can do, then you should take material into consideration. Finer sand is a bonus because by constructing our sand castle foundation using finer sand. In addition, you may try some special material, such as glue, concrete to make your sandcastle tougher.
+\par
+Sand is an ephemeral medium that requires a builder to approach the work with equanimity. So have a fun in summer and enjoy building your own kingdom above the sandcastle!
 \newpage
 
 \tableofcontents
@@ -255,6 +267,10 @@ We used a modified version of\textbf{ cellular automata} to simulate the impact 
           Only a part of the \textit{sand castle foundation} is taken into consideration since the chaos caused by flowing water would be too hard to simulation. So we'll only consider the impact angle's influence on both sand loss rate and water osmosis rate.
 \end{itemize}
 
+Note that all values aren't exact corresponding to what there actual value in real world might be, since we've seldom needed to define unit in computation or trying to map variables to exact physical concept. Instead, during our simulation, we consider more about development efficiency and the asymptotic complexity of the process so as to get more accurate results in a limited amount of time on a limited computer.
+\par
+Simulation based on discrete \textbf{cellular automata} takes abundant amount of time to finish, and tends to lose accuracy when processing under low resolution. Therefore we've added the \texttt{slow} boolean variable to make the automata behave as a robust system would. Do remember to turn this switch off if you're to run batches of simulation.
+
 \subsection{Nomenclature}
 We use \texttt{Python}, a script language to construct our \textbf{cellular automata}: \textit{sand castle foundation} simulator, which provides ample 3rd party library to speed up development. The \textbf{cellular automata} is sealed in a class of python called \texttt{SandCastleSimulator2D}, which has the ability to:
 
@@ -294,22 +310,23 @@ We use \texttt{Python}, a script language to construct our \textbf{cellular auto
     \label{tab:top_view_nomenclature}
 \end{table}
 
-Note that all values aren't exact corresponding to what there actual value in real world might be, since we've seldom needed to define unit in computation or trying to map variables to exact physical concept. Instead, during our simulation, we considerc more about development efficiency and the asymptotic complexity of the process so as to get more accurate results in a limited amount of time on a limited computer.
 
 \subsection{Implementation}
 
 
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{Figure_1.eps}
-    \caption{A Windows Terminal.}
-    \label{fig:Terminal}
-\end{figure}
-\textcolor{cyan}{This is a test figure. Remember to delete me.}
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{Figure_2.eps}
-    \caption{A Windows Terminal.}
-    \label{fig:Terminal}
+    \centering
+    \begin{subfigure}[a]{0.5\linewidth}
+        \includegraphics[width=\linewidth]{Figure_1.eps}
+        \caption{Sand Cluster Loss and Water Penetration}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{Figure_2.eps}
+        \caption{After 200 Wave Impacts}
+    \end{subfigure}
+    \label{fig:erosion_process}
+    \caption{Erosion Process}
 \end{figure}
 
 \subsection{Calculate \& Simulate Results}
@@ -436,28 +453,20 @@ Building a moat can help our sand castle foundation to survive the rising tide.
 Just stay in the "safety zone" and don't build your sandcastle too close to the shore will obriously reduce the damage caused by tides and waves.
 \paragraph{Less Salty Water}
 Choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. This is because fresh water has a higher value of surface tension which appears in the numerator of the term $\frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}$. Thus Red Sea is not a perfect spot, but the Baltic Sea(poor English. better expression needed.)(footnote needed)
-\subsection{sharpen your design}
-\paragraph{make it compact}
+\subsection{Sharpen Your Design}
+\paragraph{Make It Compact}
 In section 3.1, we assumed that sand particles are closely packed. In fact, there are some degree of internal erosion in the sandcastle along with the hydraulic pressures increase. The final value of the hydraulic conductivity also depends on the rate of erosion of the liner material.\\
 According to study [4], The erodibility of a soil can be described in term of the rate of erosion. They find that Correlation between erodibility and Hydraulic Conductivity of Sand-Bentonite Mixtures can be expressed in the following form:
 $$
-    k = a(\varepsilon_e)^b
+k = a(\varepsilon_e)^b
 $$
 where $a$,$b$ depends on the percentage of bentonite in the mixture ($\eta$).These studys indicate that the rate of erosion depends mainly on the porosity of the mixtures.Consequently,you had better make your works more compact to defend it from internal erosion.
 \paragraph{Finer Sand}
-Finer sand is a bonus because by constructing our sand castle foundation using finer sand, the foundation has a greater critical angle. That is because the radius of particles $R$ which is a part of the denominator decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
+Finer sand is a bonus because by constructing our sand castle foundation using finer sand, the foundation has a greater critical angle. That is because the radius of particles $R$ which is a part of the denominator decreases and (enlarge?not the proper word) the value of $tan\theta_c$. 
 \paragraph{Special Material}
 \subparagraph{Glue}
-Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used to protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it can also keep water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation.
+Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used to protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it can also keep water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation. 
 \subparagraph{Mixture}
-Concrete, a material that everyone is familiar with, has sand as its ingredient.
-\subsection{Less Salty Water}
-Choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. This is because fresh water has a higher value of surface tension which appears in the numerator of the term $\frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}$. Thus Red Sea is not a perfect spot, but the Baltic Sea(poor English. better expression needed.)(footnote needed)
-Finer sand is a bonus because by constructing our sand castle foundation using it, the foundation has a greater critical angle. That is because the term $R$, which is a part of the denominator, decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
-\subsection{Special Material}
-\paragraph{Glue}
-Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it also keeps water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation.
-\paragraph{Mixture}
 Concrete, a material that everyone is familiar with, has sand as its ingredient.
 
 \section{Sensitivity Analysis}
