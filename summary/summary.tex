@@ -383,7 +383,7 @@ def __init__(self, width, depth, delta,initial_edge=None, shear_rate=1,humidify_
 \paragraph{Wave Impact}
 The most essential part of this \textbf{cellular automata} simulator is the method \texttt{wave}, which simulate an \textbf{instant} when a \textit{sand castle foundation} is being hit by wave. By \textbf{instant}, we mean the flow of sea water is considerable slow so as to be viewed as directly downward. And the complicated interaction between sand shape and water flow is also able to be neglected. During this instant, according to:
 $$
-    \varDelta P = {F} \dot {t}
+    \varDelta P = {F} \cdot {t}
 $$
 We would also neglect the interaction between sand clusters as the momentum change $\delta P$ approaches zero. This implies the sand can considered still during the \textbf{instant} of impact.
 \par
@@ -451,8 +451,8 @@ Here in this question, we can consider the static osmosis phenomenon as the sum 
 However, during implementation, we still find the computational complexity is unacceptable for a quick, determinative simulation. Image if one simulation runs as long as a day, we might as well choose to observe the real world behavior of wet sand under wave impact. So during the process actual simulation, we choose not to consider static osmosis, treading accuracy and stability for efficiency. Of course, if the reader's got a CPU with a high enough single core performance, he/she might as well try to simulate the situation under complete consideration of static osmosis.
 
 
-\paragraph{Other Method}
-
+\paragraph{Other Methods}
+Here we list other method used in the \texttt{SandCastleSimulator2D}.
 \begin{table}[H]
     \caption{Method Explanation}
     \vspace{20pt}
@@ -496,7 +496,6 @@ for i in range(5):
     plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
     \end{minted}
 \end{longlisting}
-
 \begin{figure}[H]
     \centering
     \begin{subfigure}[a]{\linewidth}
@@ -510,6 +509,7 @@ for i in range(5):
     \label{fig:simulation_process}
     \caption{Sample Simulation Process}
 \end{figure}
+
 
 \subsection{Calculate \& Simulate Results}
 Briefly review the equation derived in section 3.1
@@ -538,8 +538,8 @@ We adopt $\Gamma = 72.8mN/m$, $\mu = 0.55$, $\rho = 1631kg/m^3$, $R = 2mm$ and $
 \begin{figure}[H]
     \centering
     \includegraphics[width=8cm, height = 6.67cm]{sand5.png}
-    \caption{A Windows Terminal.}
-    \label{the shape of the slope}
+    \caption{Slope Shape}
+    \label{fig:slope_shape}
 \end{figure}
 \begin{table}[H]
     \caption{States of Sand}
@@ -563,6 +563,107 @@ We adopt $\Gamma = 72.8mN/m$, $\mu = 0.55$, $\rho = 1631kg/m^3$, $R = 2mm$ and $
     \end{tabular}
     \label{bs2}
 \end{table}
+
+\subsection{Permutation}
+We try to permute the possible arrangements of fixed-sand-amount sand castle because of the discrete property of a \textbf{cellular automata}. To level down the computation required, we think of these three strategy:
+\begin{itemize}
+    \item [1)]
+          Permute only the possible arrangements on a small simulation field. Then, gradually increase the resolution without having to exponentially raise the number of permutations to compute on.
+    \item [2)]
+          Use interpolation to convert permutations from low resolutions to a finer edge definition. Then simulate on the upgraded arrangements.
+    \item [3)]
+          Make more assumptions. For example, if we restrict our sand castle's front edge to be second-order derivable, and estimate curves with a distorted circle, we can significantly reduce the permutations to test on.
+\end{itemize}
+Let denote the width of the simulation field as $W$ and depth as $D$. If all possible permutations should be considered, the total number of them would be $D^W$, which is totally unacceptable and unimaginable. Thus we'd like to restrict the 1st order derivation to be in a specific bound: $[-\varDelta,\varDelta]$, which will lead to a total permutation of $(2*\varDelta+1)^W$ ruffly. Let's say $\varDelta=1$, and $W=10$. So the total number of permutation would be ruffly $196,830$, which is temporarily acceptable for a modern computer. However, during the process of running simulation, we've discovered that \textbf{ten} is too small a number to represent the real world sand permutation, as shown in Figure \ref{fig:permutation}. Unfortunately, the barrier between $3^10$ and $5^20$ (if we double the amount of $\varDelta$ and $W$) is able to be compared with $20!-10!$.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{10x10.eps}
+    \caption{Iterations Until Collapsing Over 200/2000 Samples of Permutaion}
+    \label{fig:permutation}
+\end{figure}
+
+\par
+So we turn our attention to interpolation, hoping to generate a reasonable simulation result by adding enough resolution. However, as you can see in Figure \ref{fig:interpolation}, both \textbf{Cubic Spline} and \textbf{Lagrange Interpolation} leads to unacceptable results.
+\begin{figure}[H]
+    \centering
+    \label{fig:interpolation}
+    \begin{subfigure}[b]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{cubic_spline.eps}
+        \caption{100/400 Best Case: Cubic Spline}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\linewidth}
+        \label{fig:lagrange}
+        \includegraphics[width=\linewidth]{lagrange.eps}
+        \caption{10/100 Best Case: Lagrange Interpolation}
+    \end{subfigure}
+    \caption{Interpolation}
+\end{figure}
+\par
+Eventually, by adding the assumption:
+\begin{align*}
+     & All sand castle's front edge are second-order derivable, and,             \\
+     & Arbitrary curves can be estimated by distorted half circle, and,          \\
+     & We expect only one max value in the curve of sand castle edge, and,       \\
+     & Curves are the only form of edge considered since fluid may smoothen edge
+\end{align*}
+We can compute out the best circle-like curve from the permutations shown in Figure \ref{fig:curve} (each line represents an edge set up).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{distorted_circle.eps}
+    \caption{Distorted Circles}
+    \label{fig:curve}
+\end{figure}
+Then result of those sets of simulations and estimations is shown in Figure \ref{fig:result_iterations} and Figure \ref{fig:result_sand_reserve}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{iterations.eps}
+    \caption{Iterations Until Melt Down}
+    \label{fig:result_iterations}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{sands.eps}
+    \caption{Remaining Sands After Fixed Amount of Iterations}
+    \label{fig:result_sand_reserve}
+\end{figure}
+The final conclusive result would be shown in Figure \ref{fig:result} and Table \ref{tab:best_top_view}.
+\begin{table}
+    \caption{Best Top View (width=100)}
+    % \vspace{10pt}
+    \centering
+    \begin{tabular}{ccccc}
+        \hline
+        0.          & 0.          & 0.          & 0.          & 0.          \\
+        0.          & 0.          & 0.          & 0.          & 0.          \\
+        0.          & 3.46899837  & 4.87435499  & 5.93094938  & 6.80326553  \\
+        7.55540338  & 8.22041701  & 8.81803996  & 9.36118789  & 9.85886839  \\
+        10.31766302 & 10.74255518 & 11.13742567 & 11.50536599 & 11.84888516 \\
+        12.17005135 & 12.4705917  & 12.75196464 & 13.01541332 & 13.262006   \\
+        13.49266687 & 13.7082002  & 13.90930923 & 14.09661133 & 14.27065016 \\
+        14.43190557 & 14.58080168 & 14.71771362 & 14.84297302 & 14.95687263 \\
+        15.05967022 & 15.15159174 & 15.2328341  & 15.30356738 & 15.36393672 \\
+        15.41406389 & 15.45404855 & 15.4839693  & 15.50388438 & 15.51383233 \\
+        15.51383233 & 15.50388438 & 15.4839693  & 15.45404855 & 15.41406389 \\
+        15.36393672 & 15.30356738 & 15.2328341  & 15.15159174 & 15.05967022 \\
+        14.95687263 & 14.84297302 & 14.71771362 & 14.58080168 & 14.43190557 \\
+        14.27065016 & 14.09661133 & 13.90930923 & 13.7082002  & 13.49266687 \\
+        13.262006   & 13.01541332 & 12.75196464 & 12.4705917  & 12.17005135 \\
+        11.84888516 & 11.50536599 & 11.13742567 & 10.74255518 & 10.31766302 \\
+        9.85886839  & 9.36118789  & 8.81803996  & 8.22041701  & 7.55540338  \\
+        6.80326553  & 5.93094938  & 4.87435499  & 3.46899837  & 0.          \\
+        0.          & 0.          & 0.          & 0.          & 0.          \\
+        0.          & 0.          & 0.          & 0.          & 0.          \\
+        \hline
+    \end{tabular}
+    \label{tab:best_top_view}
+\end{table}
+\begin{figure}[H]
+    \centering
+    \caption{Best Top View}
+    \includegraphics[width=\linewidth]{result.eps}
+    \label{fig:result}
+\end{figure}
+
 \section{Modeling Under Rain}
 \subsection{Model Adaptations}
 Rain differs from waves and sands in the following aspects: its continuity, and its quantity. So we modify our Cellular Automata model to adapt to the new conditions.
