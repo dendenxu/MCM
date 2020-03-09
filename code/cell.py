@@ -7,7 +7,8 @@ class SandCastleSimulator2D:
     # Initialize the sand castle randomly
     def __init__(self, width, depth, delta,
                  initial_edge=None, shear_rate=1,
-                 humidify_rate=0.005, humidify_depth=1, initial_humidity=0.1):
+                 humidify_rate=0.005, humidify_depth=1, initial_humidity=0.1,
+                 slow=True, osmosis=False):
         self.delta = delta
         assert (width > (self.delta * 2))
         self.width = width
@@ -23,6 +24,7 @@ class SandCastleSimulator2D:
         else:
             self.edge = initial_edge
         self.edge = np.asarray([0 if x < 0 else (depth - 1 if x > depth - 1 else x) for x in self.edge], dtype=int)
+        self.slow = slow
         self.life = np.array([[i >= self.edge[j] for j in range(width)] for i in range(depth)])
         self.humidity = np.full((depth, width), fill_value=initial_humidity)
         self.slope = np.zeros((width,), float)
@@ -44,7 +46,10 @@ class SandCastleSimulator2D:
         self.osmotic_rate = 0.005
         self.osmotic_depth = 5
         self.longest = np.sqrt(2) * self.osmotic_depth * 2
-        # self.osmosis()
+        self.osmo = osmosis
+
+        if self.osmo:
+            self.osmosis()
         self.drop_dead()
 
         self.delta_humidity = np.flip(
@@ -96,21 +101,21 @@ class SandCastleSimulator2D:
         sine = abs(np.sin(self.slope))
 
         delta_shear = sine * self.shear_rate
-        for k in range(self.delta * 2):
+        for k in range(self.delta * (1 if self.slow else 2)):
             for i in range(self.width):
-                if (cosine[i] > np.sqrt(2) / 2 or k < 1) and (
+                if ((cosine[i] > np.sqrt(2) / 2 or k < 1) or self.slow) and (
                         delta_shear[i] + 1 / (1 - self.humidity[self.edge[i], i]) - 1) > 1:
                     self.edge[i] += 1 if self.edge[i] < self.depth - 1 else 0
                     delta_shear[i] -= delta_shear[i] / self.delta
             self.drop_prick()
-
+        if self.osmo:
+            self.osmosis()
         delta_humidity = self.delta_humidity * cosine
         for i in range(self.width):
             self.humidity[self.edge[i]::, i] += delta_humidity[0:self.depth - self.edge[i], i]
         self.update_slope()
 
-# from cell import SandCastleSimulator2D
-# sim = SandCastleSimulator2D(1000, 1000, 3)
+# sim = SandCastleSimulator2D(1000, 1000, 3, humidify_depth=1, shear_rate=0.75)
 # fig = plt.figure(figsize=(20, 20))
 # fig.add_subplot(231)
 # plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)

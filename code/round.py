@@ -29,35 +29,34 @@ for i, _ in enumerate(circle):
 counter = np.ndarray((circle.shape[0],))
 water = np.ndarray((circle.shape[0],))
 
-for index, edge in enumerate(circle):
-    sim = SandCastleSimulator2D(
-        width, depth, delta * 2, edge, shear_rate=1, humidify_rate=0.005, humidify_depth=2, initial_humidity=0.5)
-    count = 0
-    while True:
-        for _ in range(batch_size):
-            count += 1
-            sim.wave()
-        sim.update_life()
-        sim.drop_dead()
-        # print("One iteration done, enough?")
-        if np.sum(sim.life) <= desired_sum - desired_loss:
-            print("Enough! Enough for pm {} with counter value {}".format(index, count))
-            counter[index] = count
-            break
-        # print("Not enough for pm {} at counter value {}".format(index, count))
-
-
-# batch_size = 20
-# water = np.ndarray((circle.shape[0],))
 # for index, edge in enumerate(circle):
 #     sim = SandCastleSimulator2D(
-#         width, depth, delta * 2, edge, shear_rate=1, humidify_rate=0.05, humidify_depth=2, initial_humidity=0.5)
-#     for _ in range(batch_size):
-#         sim.wave()
-#     sim.update_life()
-#     sim.drop_dead()
-#     counter[index] = np.sum(sim.life)
-#     water[index] = (np.sum(sim.humidity) + counter[index] - width * depth) / counter[index]
+#         width, depth, delta * 2, edge, shear_rate=1, humidify_rate=0.005, humidify_depth=2, initial_humidity=0.5, slow=False)
+#     count = 0
+#     while True:
+#         for _ in range(batch_size):
+#             count += 1
+#             sim.wave()
+#         sim.update_life()
+#         sim.drop_dead()
+#         # print("One iteration done, enough?")
+#         if np.sum(sim.life) <= desired_sum - desired_loss:
+#             print("Enough! Enough for pm {} with counter value {}".format(index, count))
+#             counter[index] = count
+#             break
+#         # print("Not enough for pm {} at counter value {}".format(index, count))
+
+
+batch_size = 20
+for index, edge in enumerate(circle):
+    sim = SandCastleSimulator2D(
+        width, depth, delta * 2, edge, shear_rate=1, humidify_rate=0.05, humidify_depth=2, initial_humidity=0.5, slow=False)
+    for _ in range(batch_size):
+        sim.wave()
+    sim.update_life()
+    sim.drop_dead()
+    counter[index] = np.sum(sim.life)
+    water[index] = (np.sum(sim.humidity) + counter[index] - width * depth) / counter[index]
 plt.figure(figsize=(10, 10))
 plt.plot(counter)
 plt.figure(figsize=(10, 10))
