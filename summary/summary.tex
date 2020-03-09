@@ -281,17 +281,63 @@ Substitute the above result into Eq.(), we obtain the result
 $$ tan\theta_c = \mu + \frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}sec[tan^{-1}(\mu)] $$
 
 \subsection{Top View Shape}
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
 \par
 We used a modified version of\textbf{ cellular automata} to simulate the impact of tides and waves. There are several factors that are taken into consideration:
 \par
+\subsection{Assumptions}
 \begin{itemize}
     \item [1)]
-          ...
+          We consider only the slice of the \textit{sand castle foundation}, which is a two-dimensional plane. The sea wave is considered to come from above, which mean it impacts our \textit{sand castle foundation} downwards.
     \item [2)]
-          ...
-    \item [3)]
-          ...
+          Only a part of the \textit{sand castle foundation} is taken into consideration since the chaos caused by flowing water would be too hard to simulation. So we'll only consider the impact angle's influence on both sand loss rate and water osmosis rate.
 \end{itemize}
+
+\subsection{Nomenclature}
+We use \texttt{Python}, a script language to construct our \textbf{cellular automata}: \textit{sand castle foundation} simulator, which provides ample 3rd party library to speed up development. The \textbf{cellular automata} is sealed in a class of python called \texttt{SandCastleSimulator2D}, which has the ability to:
+
+\begin{itemize}
+    \item [1)]
+          Computing current sand surface slope, which is going to affect how sea wave is going to affect this small area of sand.
+    \item [2)]
+          Reverse information about current simulation field, include the state of each individual sand cluster, the water-to-sand proportion of each cluster.
+    \item [3)]
+          Simulate a small moment of wave impact, dropping sand and updating each cluster's \textit{humidity}.
+    \item [4)]
+          Comstructing a color map for this particular problem.
+\end{itemize}
+
+\begin{table}[H]
+    \caption{Variable Nomenclature}
+    \vspace{10pt}
+    \centering
+    \begin{tabular}{p{3cm}p{12cm}}
+        \hline
+        \textbf{Symblol}           & \textbf{Meaning}                                                                                            \\
+        \hline
+        \texttt{width}             & The width of the simulation field along x axis. unit: sand cluster                                          \\
+        \texttt{depth}             & The depth of the simulation field along y axis. unit: sand cluster                                          \\
+        \texttt{delta}             & A value small enough for slope computation, determines the rate of sand property alteration per wave impact \\
+        \texttt{initial\_edge}     & The front edge of the \textit{sand castle foundation}                                                       \\
+        \texttt{shear\_rate}       & How much the angle of impact influences the stay or leave of each cluster                                   \\
+        \texttt{humidify\_rate}    & How much water can penetrate into sand through outer sand shell                                             \\
+        \texttt{humidify\_depth}   & The reciprocal of water penetration decrease rate                                                           \\
+        \texttt{initial\_humidity} & Initial humidity of each sand cluster                                                                       \\
+        \texttt{osmotic\_rate}     & Similar as \texttt{humidify\_rate}, affects sand cluster no matter the angle                                \\
+        \texttt{osmotic\_depth}    & Similar as \texttt{humidify\_depth}, affects sand cluster no matter the angle                               \\
+        \texttt{slow}              & Whether the model is running on high resolution mode (bigger than 500x500)                                  \\
+        \texttt{osmosis}           & Whether osmosis is considered (penetration no matter the angle)                                             \\
+        \hline
+    \end{tabular}
+    \label{tab:top_view_nomenclature}
+\end{table}
+
+Note that all values aren't exact corresponding to what there actual value in real world might be, since we've seldom needed to define unit in computation or trying to map variables to exact physical concept. Instead, during our simulation, we considerc more about development efficiency and the asymptotic complexity of the process so as to get more accurate results in a limited amount of time on a limited computer.
+
+\subsection{Implementation}
+
+
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figure_1.eps}
@@ -397,7 +443,7 @@ we initially wish to create a three dimensional matrix to represent the situatio
     \centering
     \begin{tabular}{ |l| p{5cm}| } 
         \hline
-        symble       & meaning                                                             \\
+        symbol       & meaning                                                             \\
         \hline
         $c_{ijk}(t)$ & the cell mixed with sand and water to form the sandcastle in time t \\
         $s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
@@ -440,14 +486,15 @@ $$
 $$
 \par
 where $k$ is the hydraulic permeability of sea water, $L$ is the length of one side of the cell, $\mu$ is the viscosity of sea water, $\Delta$ is the pressure differential between the two sides of the cell.As we assume that the sea water left on the surface of the sandcastle can totally penetrate. Then we could get for each cycle:
-$$
-    L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit})\\
-    (\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
-$$
+\begin{align*}
+     & L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit}) \\
+     & (\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
+\end{align*}
 \par
 Then We need to find out the longest time when the above constraints are met and the sandcastle exists.
 
 \section{Other Tricks to Make Our Sand Castle Last Longer}
+<<<<<<< HEAD
 \subsection{Build a Moat}
 Building a moat can help our sand castle foundation to survive the rising tide. With the help of a moat, waves recede before they can hit the foundation, which significantly prolongs the life of the foundation.
 \subsection{Make It Compact}
@@ -459,11 +506,30 @@ In section 3.1, we assumed that sand particles are closely packed.
 According to our analysis in section 5, the optimal sand-to-water proportion is 1\%.
 (This is not possible if the castle can be reached by wave...)
 \subsection{Finer Sand}
+=======
+\subsection{Better conditions to survive}
+As we acknowledge that the greatest threats to our sandcastle is the erosion of tides and wives. Consequently, a relatively safe place will be better if we want to protect it from erosion for a longer time. That means we can do something as follow:
+\paragraph{Build a Moat}
+Building a moat can help our sand castle foundation to survive the rising tide.
+\paragraph{Further From the Shore}
+Just stay in the "safety zone" and don't build your sandcastle too close to the shore will obriously reduce the damage caused by tides and waves.
+\paragraph{Less Salty Water}
+Choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. This is because fresh water has a higher value of surface tension which appears in the numerator of the term $\frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}$. Thus Red Sea is not a perfect spot, but the Baltic Sea(poor English. better expression needed.)(footnote needed)
+\subsection{sharpen your design}
+\paragraph{make it compact}
+In section 3.1, we assumed that sand particles are closely packed. In fact, there are some degree of internal erosion in the sandcastle along with the hydraulic pressures increase. The final value of the hydraulic conductivity also depends on the rate of erosion of the liner material.\\
+According to study [4], The erodibility of a soil can be described in term of the rate of erosion. They find that Correlation between erodibility and Hydraulic Conductivity of Sand-Bentonite Mixtures can be expressed in the following form:
+$$
+    k = a(\varepsilon_e)^b
+$$
+where $a$,$b$ depends on the percentage of bentonite in the mixture ($\eta$).These studys indicate that the rate of erosion depends mainly on the porosity of the mixtures.Consequently,you had better make your works more compact to defend it from internal erosion.
+\paragraph{Finer Sand}
+>>>>>>> e334ded5f15d62d3572a605751da172da874d944
 Finer sand is a bonus because by constructing our sand castle foundation using finer sand, the foundation has a greater critical angle. That is because the radius of particles $R$ which is a part of the denominator decreases and (enlarge?not the proper word) the value of $tan\theta_c$.
-\subsection{Special Material}
-\paragraph{Glue}
+\paragraph{Special Material}
+\subparagraph{Glue}
 Sand sculptures seen in exhibitions or competitions have their surfaces covered with special glue. The glue is mainly used to protect the sand sculpture from drying out or crumbling if the waves do not wash it away first, but it can also keep water out. In our model where the greatest enemy of the foundation is not collapses but erosion, such glue will help maintain the shape of the foundation.
-\paragraph{Mixture}
+\subparagraph{Mixture}
 Concrete, a material that everyone is familiar with, has sand as its ingredient.
 \subsection{Less Salty Water}
 Choosing a beach near a less salty ocean may contribute to building a more concrete sand castle. This is because fresh water has a higher value of surface tension which appears in the numerator of the term $\frac{\sqrt{2}\pi\mu\Gamma}{R\rho gD}$. Thus Red Sea is not a perfect spot, but the Baltic Sea(poor English. better expression needed.)(footnote needed)
