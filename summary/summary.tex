@@ -293,18 +293,18 @@ We first assume that..
 \par
 As we mentioned above, the adhesive stress across the plane ( $s_A$ ) is determined by water content. Consequently, we will find out how the cohesion in wet granular materials varies with different amount of liquid based on liquid bridge model to find an optimal sand-to-water mixture proportion.
 \par
-There are five differing degrees of wetting in granular matter. As dry grains and slurry have no cohesion between particles, we just consider three other conditions. According to [2], we can see that the slope for low and large liquid content is much larger than that for intermediate liquid content. That is: the suction changes sharply as these three states transform each other. Consequently,we should keep the proportion of water to sand in steady for a long time, which means try to avoid transformation between three states. 
+There are five differing degrees of wetting in granular matter. As dry grains and slurry have no cohesion between particles, we just consider three other conditions. According to [2], we can see that the slope for low and large liquid content is much larger than that for intermediate liquid content. That is: the suction changes sharply as these three states transform each other. Consequently,we should keep the proportion of water to sand in steady for a long time, which means try to avoid transformation between three states.
 \par
-we initially wish to create a three dimensional matrix to represent the situation. We still consider that the sandcastle $C$ consists of cells mixed with sand and water. Then It's easy to Calculate each cell’s sand-to-water mixture proportion from the amount of sand and water. 
+we initially wish to create a three dimensional matrix to represent the situation. We still consider that the sandcastle $C$ consists of cells mixed with sand and water. Then It's easy to Calculate each cell’s sand-to-water mixture proportion from the amount of sand and water.
 \textcolor{cyan}{ADD TWO CELLULAR FIGURES HERE, DRAWING!}
 \subsection{Assumptions}
 \begin{itemize}
-	\item [1)] 
-	waves and tides erode the sandcastle in a very short time, which means that the we can neglect Osmosis occurred during erosion.
-	\item [2)]
-	After eroded, the liquid left on sandcastle has ample time to penetrate.
-	\item [3)]
-	The evaporation of liquid is neglected.
+    \item [1)]
+          waves and tides erode the sandcastle in a very short time, which means that the we can neglect Osmosis occurred during erosion.
+    \item [2)]
+          After eroded, the liquid left on sandcastle has ample time to penetrate.
+    \item [3)]
+          The evaporation of liquid is neglected.
 \end{itemize}
 \subsection{Nomenclature}
 \begin{table}[H]
@@ -313,17 +313,17 @@ we initially wish to create a three dimensional matrix to represent the situatio
     \centering
     \begin{tabular}{ |l| p{5cm}| }
         \hline
-        symble & meaning \\
+        symble       & meaning                                                             \\
         \hline
-        $c_{ijk}(t)$		&the cell mixed with sand and water to form the sandcastle in time t	    \\
-        $s_{ijk}(t)$		&the amount of sand in the cell in time t						            \\
-        $w_{ijk}(t)$		&the amount of water in  $c_{ijk}$ in time t						        \\
-        $p_{ijk}(t)$		&the proportion of sand-to-water mixture $c_{ijk}$ in time t		        \\
-        $S(t)$			    &the amount of sand in the sandcastle	int time t					        \\
-        $W(t)$			    &the amount of water in the sandcastle in time t					        \\
-		$P(t)$			    &the average proportion of sand-to-water mixture $c_{ijk}$ in time t        \\
-		$F(t)$			    &the erosion-Osmosis common effect of the sea water in time t        		\\
-        \hline       
+        $c_{ijk}(t)$ & the cell mixed with sand and water to form the sandcastle in time t \\
+        $s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
+        $w_{ijk}(t)$ & the amount of water in  $c_{ijk}$ in time t                         \\
+        $p_{ijk}(t)$ & the proportion of sand-to-water mixture $c_{ijk}$ in time t         \\
+        $S(t)$       & the amount of sand in the sandcastle	int time t                      \\
+        $W(t)$       & the amount of water in the sandcastle in time t                     \\
+        $P(t)$       & the average proportion of sand-to-water mixture $c_{ijk}$ in time t \\
+        $F(t)$       & the erosion-Osmosis common effect of the sea water in time t        \\
+        \hline
     \end{tabular}
     \label{bs1}
 \end{table}
@@ -338,27 +338,27 @@ And we define that the sandcastle is completely eroded as:
 $$  P(t) = \frac{\sum_{i,j,k}s_{ijk}(t_0)}{\sum_{i,j,k}w_{ijk}(t_0)} \leq P_{erode} $$
 \par
 where $P_{erode}$ refers to proportion that Funicular transforms to capillary state. Then we define the flow equation during erosion as follow:
-$$	E= 	
-\begin{cases}
-	F& \text{the cell is being eroded by sea}\\
-	0& \text{else}
-\end{cases}
+$$	E=
+    \begin{cases}
+        F & \text{the cell is being eroded by sea} \\
+        0 & \text{else}
+    \end{cases}
 $$
 \par
-As erosion occurs for a split second, we could just neglect the permeation to simplify our analysis. To obtain a probability model to evaluate the sand taken by waves, we need to acquire further understanding about the flow liquid. Here we use Navier-Stokes equations to describe the motion of viscous fluid substances. 
+As erosion occurs for a split second, we could just neglect the permeation to simplify our analysis. To obtain a probability model to evaluate the sand taken by waves, we need to acquire further understanding about the flow liquid. Here we use Navier-Stokes equations to describe the motion of viscous fluid substances.
 $$
-x \rho(\frac{\partial \upsilon}{\partial t} + \upsilon \cdot \nabla \upsilon) = -\nabla p + \nabla \cdot(\mu(\nabla \upsilon+(\nabla \upsilon)^T)-\frac{2}{3}\mu(\nabla \upsilon)I)+F\\\frac{\partial \rho}{\partial t}+\rho\nabla\cdot\vec{\upsilon}=0(continuity \ equations)                    
+    x \rho(\frac{\partial \upsilon}{\partial t} + \upsilon \cdot \nabla \upsilon) = -\nabla p + \nabla \cdot(\mu(\nabla \upsilon+(\nabla \upsilon)^T)-\frac{2}{3}\mu(\nabla \upsilon)I)+F\\\frac{\partial \rho}{\partial t}+\rho\nabla\cdot\vec{\upsilon}=0(continuity \ equations)
 $$
 \par
 After eroded we should find the cell completely eroded by tides and waves. Then by reference to Darcy's law and Huygens–Fresnel principle, We consider water permeating the sandcastle as follow:
 $$
-\upsilon=\frac{kA(p_b-p_a)}{\mu L}=\frac{kL(\Delta P)}{\mu}
+    \upsilon=\frac{kA(p_b-p_a)}{\mu L}=\frac{kL(\Delta P)}{\mu}
 $$
 \par
 where $k$ is the hydraulic permeability of sea water, $L$ is the length of one side of the cell, $\mu$ is the viscosity of sea water, $\Delta$ is the pressure differential between the two sides of the cell.As we assume that the sea water left on the surface of the sandcastle can totally penetrate. Then we could get for each cycle:
 $$
-L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit})\\
-(\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
+    L (k,t,\mu,\rho,\upsilon,p)=\sum_{c_{ijk}\in C}\sum_{i-1}^{i+1}\sum_{j-1}^{j+1}\sum_{k-1}^{k+1}{p_{mnp}\cdot E}(m,n,p \neq i,j,k)(P(t) <P_{limit})\\
+    (\upsilon \cdot \nabla \upsilon)+(\mu \cdot \nabla \mu)+(\rho \cdot \nabla \rho) = Constant
 $$
 \par
 Then We need to find out the longest time when the above constraints are met and the sandcastle exists.
