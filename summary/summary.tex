@@ -449,19 +449,7 @@ Here in this question, we can consider the static osmosis phenomenon as the sum 
 \end{figure}
 \par
 However, during implementation, we still find the computational complexity is unacceptable for a quick, determinative simulation. Image if one simulation runs as long as a day, we might as well choose to observe the real world behavior of wet sand under wave impact. So during the process actual simulation, we choose not to consider static osmosis, treading accuracy and stability for efficiency. Of course, if the reader's got a CPU with a high enough single core performance, he/she might as well try to simulate the situation under complete consideration of static osmosis.
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[a]{\linewidth}
-        \includegraphics[width=\linewidth]{Figure_1.eps}
-        \caption{Sand Cluster Loss and Water Penetration}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.7\linewidth}
-        \includegraphics[width=\linewidth]{Figure_2.eps}
-        \caption{After 200 Wave Impacts}
-    \end{subfigure}
-    \label{fig:erosion_process}
-    \caption{Erosion Process}
-\end{figure}
+
 
 \paragraph{Other Method}
 
@@ -481,6 +469,47 @@ However, during implementation, we still find the computational complexity is un
     \label{tab:method_explanation}
 \end{table}
 
+\subsection{Sample Simulation Result}
+Here's a simulation result of the default configuration.
+
+
+
+\par
+In Figure \ref{fig:simulation_process}, we generate an output per hundred iteration with a setup like this:
+
+\begin{longlisting}
+    \caption{Generating Simulation Result}
+    \begin{minted}[breaklines,frame=single,linenos]{python}
+from cell import SandCastleSimulator2D
+sim = SandCastleSimulator2D(1000, 1000, 3, humidify_depth=1, shear_rate=0.75)
+fig = plt.figure(figsize=(20, 20))
+fig.add_subplot(231)
+plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
+
+
+for i in range(5):
+    for _ in range(100):
+        sim.wave()
+    sim.update_life()
+    sim.drop_dead()
+    fig.add_subplot(230 + i + 2)
+    plt.imshow(sim.humidity, cmap=sim.sea_wet_sand)
+    \end{minted}
+\end{longlisting}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[a]{\linewidth}
+        \includegraphics[width=\linewidth]{Figure_1.eps}
+        \caption{Sand Cluster Loss and Water Penetration}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.7\linewidth}
+        \includegraphics[width=\linewidth]{Figure_2.eps}
+        \caption{After 200 Wave Impacts}
+    \end{subfigure}
+    \label{fig:simulation_process}
+    \caption{Sample Simulation Process}
+\end{figure}
 
 \subsection{Calculate \& Simulate Results}
 Briefly review the equation derived in section 3.1
