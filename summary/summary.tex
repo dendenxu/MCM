@@ -206,10 +206,11 @@ Several assumptions are made in order to simplify our model.
         $s_{ijk}(t)$ & the amount of sand in the cell in time t                            \\
         $w_{ijk}(t)$ & the amount of water in  $c_{ijk}$ in time t                         \\
         $p_{ijk}(t)$ & the proportion of sand-to-water mixture $c_{ijk}$ in time t         \\
-        $S(t)$       & the amount of sand in the sandcastle	int time t                      \\
+        $S(t)$       & the amount of sand in the sandcastle	in time t                       \\
         $W(t)$       & the amount of water in the sandcastle in time t                     \\
         $P(t)$       & the average proportion of sand-to-water mixture $c_{ijk}$ in time t \\
-        $F(t)$       & the erosion-Osmosis common effect of the sea water in time t        \\
+        $F(t)$       & the erosion-osmosis common effect of the sea water in time t        \\
+        $T(t)$       & the tangent of the sand surface                                     \\
         \hline
     \end{tabular}
     \label{bs2}
@@ -314,24 +315,24 @@ We use \texttt{Python}, a script language to construct our \textbf{cellular auto
 
 \begin{table}[H]
     \caption{Variable Nomenclature}
-    \vspace{10pt}
+    \vspace{20pt}
     \centering
     \begin{tabular}{p{3cm}p{12cm}}
         \hline
         \textbf{Symblol}           & \textbf{Meaning}                                                                                            \\
         \hline
-        \texttt{width}             & The width of the simulation field along x axis. unit: sand cluster                                          \\
-        \texttt{depth}             & The depth of the simulation field along y axis. unit: sand cluster                                          \\
-        \texttt{delta}             & A value small enough for slope computation, determines the rate of sand property alteration per wave impact \\
-        \texttt{initial\_edge}     & The front edge of the \textit{sand castle foundation}                                                       \\
-        \texttt{shear\_rate}       & How much the angle of impact influences the stay or leave of each cluster                                   \\
-        \texttt{humidify\_rate}    & How much water can penetrate into sand through outer sand shell                                             \\
-        \texttt{humidify\_depth}   & The reciprocal of water penetration decrease rate                                                           \\
-        \texttt{initial\_humidity} & Initial humidity of each sand cluster                                                                       \\
-        \texttt{osmotic\_rate}     & Similar as \texttt{humidify\_rate}, affects sand cluster no matter the angle                                \\
-        \texttt{osmotic\_depth}    & Similar as \texttt{humidify\_depth}, affects sand cluster no matter the angle                               \\
-        \texttt{slow}              & Whether the model is running on high resolution mode (bigger than 500x500)                                  \\
-        \texttt{osmosis}           & Whether osmosis is considered (penetration no matter the angle)                                             \\
+        \texttt{width}             & the width of the simulation field along x axis. unit: sand cluster                                          \\
+        \texttt{depth}             & the depth of the simulation field along y axis. unit: sand cluster                                          \\
+        \texttt{delta}             & a value small enough for slope computation, determines the rate of sand property alteration per wave impact \\
+        \texttt{initial\_edge}     & the front edge of the \textit{sand castle foundation}                                                       \\
+        \texttt{shear\_rate}       & how much the angle of impact influences the stay or leave of each cluster                                   \\
+        \texttt{humidify\_rate}    & how much water can penetrate into sand through outer sand shell                                             \\
+        \texttt{humidify\_depth}   & the reciprocal of water penetration decrease rate                                                           \\
+        \texttt{initial\_humidity} & initial humidity of each sand cluster                                                                       \\
+        \texttt{osmotic\_rate}     & similar as \texttt{humidify\_rate}, affects sand cluster no matter the angle                                \\
+        \texttt{osmotic\_depth}    & similar as \texttt{humidify\_depth}, affects sand cluster no matter the angle                               \\
+        \texttt{slow}              & whether the model is running on high resolution mode (bigger than 500x500)                                  \\
+        \texttt{osmosis}           & whether osmosis is considered (penetration no matter the angle)                                             \\
         \hline
     \end{tabular}
     \label{tab:top_view_nomenclature}
@@ -382,19 +383,27 @@ def __init__(self, width, depth, delta,initial_edge=None, shear_rate=1,humidify_
 \paragraph{Wave Impact}
 The most essential part of this \textbf{cellular automata} simulator is the method \texttt{wave}, which simulate an \textbf{instant} when a \textit{sand castle foundation} is being hit by wave. By \textbf{instant}, we mean the flow of sea water is considerable slow so as to be viewed as directly downward. And the complicated interaction between sand shape and water flow is also able to be neglected. During this instant, according to:
 $$
-\delta P = {F} \dot {t}
+    \varDelta P = {F} \dot {t}
 $$
 We would also neglect the interaction between sand clusters as the momentum change $\delta P$ approaches zero. This implies the sand can considered still during the \textbf{instant} of impact.
 \par
-
-\begin{figure}[H]
-    \caption{Mechanical Analysis}
-    \label{fig:mechanical_analysis}
-    \includegraphics{force_separation.eps}
-\end{figure}
+According to the most obvious mechanical analysis shown in Figure \ref{fig:mechanical_analysis}, the sea wave's impact is separated into two parts. One will take away a lot of sand, and the other will hit the \textit{sand castle foundation} hard by penetrating into it, adding "humidity" along the way.
+\par
+Here's a list of things to note about the implementation of \texttt{wave}
+\begin{itemize}
+    \item [1)]
+          We approximately determine a sand to be melt down when:
+          $$
+              \tau + {{1}\over{1-W_i(t)}} - 1 > 1
+          $$
+          and\par
+          \texttt{self.slow} is \texttt{True} or $T_i(t) > 1$ (which can also be interpreted as $\cos(\arctan{T_i(t)}) > {\sqrt{2} \over 2}$)
+    \item [2)]
+          When the resolution of the simulation is large enough, we're able to slow down the iteration by tweaking several places of the code to get a more accurate result.
+\end{itemize}
 
 \begin{longlisting}
-    \caption{Implementation of \texttt{\_\_init\_\_}}
+    \caption{Implementation of \texttt{wave}}
     \begin{minted}[breaklines,frame=single,linenos]{python}
 def wave(self):
     cosine = abs(np.cos(self.slope))
@@ -407,16 +416,39 @@ def wave(self):
                     delta_shear[i] + 1 / (1 - self.humidity[self.edge[i], i]) - 1) > 1:
                 self.edge[i] += 1 if self.edge[i] < self.depth - 1 else 0
                 delta_shear[i] -= delta_shear[i] / self.delta
-        self.drop_prick()
+        self.drop_prick() # drop the pricks in the resulted edge
     if self.osmo:
-        self.osmosis()
+        self.osmosis() # perform osmosis if required
     delta_humidity = self.delta_humidity * cosine
+
+    #update humidity
     for i in range(self.width):
         self.humidity[self.edge[i]::, i] += delta_humidity[0:self.depth - self.edge[i], i]
-    self.update_slope()
+    self.update_slope() # compute discrete differentiation on the updated edge
     \end{minted}
 \end{longlisting}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{force_separation.eps}
+    \caption{Mechanical Analysis}
+    \label{fig:mechanical_analysis}
+\end{figure}
+
+\paragraph{Osmosis}
+By \textbf{static osmosis}, we mean the natural penetration of water through object, which has already been observed \autocite{pakpour2012construct}. According to \textbf{Huygens–Fresnel principle} \autocite{huygensfresnel}, we know that
+\par
+"Every point on a wavefront is itself the source of spherical wavelets, and the secondary wavelets emanating from different points mutually interfere. The sum of these spherical wavelets forms the wavefront." as shown in Figure \ref{fig:huygens}
+\par
+Here in this question, we can consider the static osmosis phenomenon as the sum a series of point emanated secondary wavelets, which can significantly simplify the computation of the \textbf{normal} of the sand edge.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Refraction_on_an_aperture_-_Huygens-Fresnel_principle.eps}
+    \caption{Huygens-Fresnel principle}
+    \label{fig:huygens}
+\end{figure}
+\par
+However, during implementation, we still find the computational complexity is unacceptable for a quick, determinative simulation. Image if one simulation runs as long as a day, we might as well choose to observe the real world behavior of wet sand under wave impact. So during the process actual simulation, we choose not to consider static osmosis, treading accuracy and stability for efficiency. Of course, if the reader's got a CPU with a high enough single core performance, he/she might as well try to simulate the situation under complete consideration of static osmosis.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[a]{\linewidth}
@@ -430,6 +462,25 @@ def wave(self):
     \label{fig:erosion_process}
     \caption{Erosion Process}
 \end{figure}
+
+\paragraph{Other Method}
+
+\begin{table}[H]
+    \caption{Method Explanation}
+    \vspace{20pt}
+    \centering
+    \begin{tabular}{p{3cm}p{12cm}}
+        \hline
+        \textbf{Method}        & \textbf{Usage}                                                \\
+        \hline
+        \texttt{drop\_dead}    & update \texttt{self.life} according to current front edge     \\
+        \texttt{drop\_prick}   & smoothen current front edge                                   \\
+        \texttt{update\_slope} & compute the tangent (slope) of current edge, neglecting brink \\
+        \hline
+    \end{tabular}
+    \label{tab:method_explanation}
+\end{table}
+
 
 \subsection{Calculate \& Simulate Results}
 Briefly review the equation derived in section 3.1
@@ -505,7 +556,7 @@ As we mentioned above, the adhesive stress across the plane ( $s_A$ ) is determi
 \par
 There are five differing degrees of wetting in granular matter. As dry grains and slurry have no cohesion between particles, we just consider three other conditions. According to [2], we can see that the slope for low and large liquid content is much larger than that for intermediate liquid content. That is: the suction changes sharply as these three states transform each other. Consequently,we should keep the proportion of water to sand in steady for a long time, which means try to avoid transformation between three states.
 \par
-we initially wish to create a three dimensional matrix to represent the situation. We still consider that the sandcastle $C$ consists of cells mixed with sand and water. Then It's easy to Calculate each cell’s sand-to-water mixture proportion from the amount of sand and water.
+We initially wished to create a three dimensional matrix to represent the situation. We still consider that the sandcastle $C$ consists of cells mixed with sand and water. Then It's easy to Calculate each cell’s sand-to-water mixture proportion from the amount of sand and water.
 \textcolor{cyan}{ADD TWO CELLULAR FIGURES HERE, DRAWING!}
 \subsection{Assumptions}
 \begin{itemize}
